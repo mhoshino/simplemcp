@@ -1,6 +1,8 @@
 classes:
+- system.linux.system.repo.mcp.salt
 - system.salt.master.pkg
 - system.salt.minion.master
+- system.openssh.server.single
 - system.reclass.storage.salt
 parameters:
   _param:
@@ -8,34 +10,31 @@ parameters:
     reclass_data_repository: 
     reclass_data_revision: master
     salt_master_base_environment: base
+    local_repo_url: apt.mirantis.com
+    linux_repo_refresh_db: true
   reclass:
     storage:
       data_source:
         engine: local
       node:
         cid_name:
-          name: ${_param:stackname}cid
+          name: ${_param:stack_name}cid
           domain: ${_param:domain}
           environment: ${_param:salt_master_base_environment}
           classes:
-          - cluster.${_param:stackname}.stacklight
+          - cluster.${_param:stack_name}.stacklight
           params:
             deploy_address: 192.168.0.11
         aio_node:
-          name: ${_param:stackname}aio
+          name: ${_param:stack_name}aio
           domain: ${_param:domain}
           environment: ${_param:salt_master_base_environment}
           classes:
-          - cluster.${_param:stackname}.openstackaio
+          - cluster.${_param:stack_name}.openstackaio
           params:
             deploy_address: 192.168.0.12
   linux:
     system:
-      user:
-        root:
-          enabled: true
-          name: root
-        salt:
-          enabled: false
+      enabled: true
     storage:
       enabled: true
