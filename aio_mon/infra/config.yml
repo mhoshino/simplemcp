@@ -9,8 +9,8 @@ parameters:
     linux_system_codename: xenial
     reclass_data_repository: 
     reclass_data_revision: master
-    salt_master_base_environment: base
     linux_repo_refresh_db: true
+    salt_master_base_environment: prd
   reclass:
     storage:
       data_source:
@@ -37,3 +37,6 @@ parameters:
       enabled: true
     storage:
       enabled: true
+  salt:
+    master:
+     base_environment: prd
