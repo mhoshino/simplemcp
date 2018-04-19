@@ -1,0 +1,26 @@
+classes:
+- system.salt.master.pkg
+#- system.reclass.storage.salt
+parameters:
+  reclass:
+    storage:
+      data_source:
+        engine: local
+      cid_name:
+        name: ${_param:stackname}cid
+        params:
+         deploy_address: 192.168.0.11
+      aio_node:
+        name: ${_param:stackname}aio
+        params:
+         deploy_address: 192.168.0.12
+  linux:
+    system:
+      user:
+        root:
+          enabled: true
+          name: root
+        salt:
+          enabled: false
+    storage:
+      enabled: true
