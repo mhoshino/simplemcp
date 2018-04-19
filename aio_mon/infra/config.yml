@@ -10,15 +10,14 @@ parameters:
     reclass_data_repository: 
     reclass_data_revision: master
     salt_master_base_environment: base
-    local_repo_url: apt.mirantis.com
     linux_repo_refresh_db: true
   reclass:
     storage:
       data_source:
         engine: local
       node:
-        cid_name:
-          name: ${_param:stack_name}cid
+        mon_node:
+          name: ${_param:stack_name}mon
           domain: ${_param:domain}
           environment: ${_param:salt_master_base_environment}
           classes:
