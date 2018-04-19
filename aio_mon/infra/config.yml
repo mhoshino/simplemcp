@@ -1,19 +1,34 @@
 classes:
 - system.salt.master.pkg
-#- system.reclass.storage.salt
+- system.salt.minion.master
+- system.reclass.storage.salt
 parameters:
+  _param:
+    linux_system_codename: xenial
+    reclass_data_repository: 
+    reclass_data_revision: master
+    salt_master_base_environment: base
   reclass:
     storage:
       data_source:
         engine: local
-      cid_name:
-        name: ${_param:stackname}cid
-        params:
-         deploy_address: 192.168.0.11
-      aio_node:
-        name: ${_param:stackname}aio
-        params:
-         deploy_address: 192.168.0.12
+      node:
+        cid_name:
+          name: ${_param:stackname}cid
+          domain: ${_param:domain}
+          environment: ${_param:salt_master_base_environment}
+          classes:
+          - cluster.${_param:stackname}.stacklight
+          params:
+            deploy_address: 192.168.0.11
+        aio_node:
+          name: ${_param:stackname}aio
+          domain: ${_param:domain}
+          environment: ${_param:salt_master_base_environment}
+          classes:
+          - cluster.${_param:stackname}.openstackaio
+          params:
+            deploy_address: 192.168.0.12
   linux:
     system:
       user:
