@@ -1,8 +1,8 @@
 classes:
 - cluster.mcpmhoshi.openstackaio.repo
 - cluster.mcpmhoshi.openstackaio.galera
-- cluster.mcpmhoshi.openstackaio.rabbitmq
-- cluster.mcpmhoshi.openstackaio.keystone
+#- cluster.mcpmhoshi.openstackaio.rabbitmq
+#- cluster.mcpmhoshi.openstackaio.keystone
 
 parameters:
   _param:

@@ -1,7 +1,5 @@
 classes:
-- system.linux.system.repo.mcp.salt
 - system.salt.master.pkg
-- system.salt.minion.master
 - system.openssh.server.single
 - system.reclass.storage.salt
 parameters:
@@ -23,7 +21,7 @@ parameters:
           classes:
           - cluster.${_param:stack_name}.stacklight
           params:
-            deploy_address: 192.168.0.11
+            single_address: 192.168.0.11
         aio_node:
           name: ${_param:stack_name}aio
           domain: ${_param:domain}
@@ -31,11 +29,9 @@ parameters:
           classes:
           - cluster.${_param:stack_name}.openstackaio
           params:
-            deploy_address: 192.168.0.12
+            single_address: 192.168.0.12
   linux:
     system:
-      enabled: true
-    storage:
       enabled: true
   salt:
     master:
