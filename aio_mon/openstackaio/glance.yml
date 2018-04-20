@@ -1,0 +1,10 @@
+classes:
+- system.mysql.client.database.glance
+- system.glance.control.single
+#- system.glance.client
+parameters:
+  _param:
+    glance_version: ${_param:openstack_version}
+    mysql_glance_password: password
+    openstack_fluentd_handler_enabled: false
+    openstack_ossyslog_handler_enabled: false
