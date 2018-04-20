@@ -1,0 +1,13 @@
+classes:
+- system.galera.server.database.keystone
+#- system.keystone.server.wsgi
+#- system.keystone.server.single
+#- system.keystone.client.single
+parameters:
+  _param:
+    openstack_version: pike
+    admin_email: admin@admin.com
+    rabbitmq_openstack_password: password
+    keystone_version: ${_param:openstack_version}
+    mysql_keystone_password: password
+

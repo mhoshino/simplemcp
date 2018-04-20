@@ -1,0 +1,10 @@
+classes:
+- service.galera.master.cluster
+parameters:
+  _param:
+    cluster_local_address: ${_param:single_address}
+    galera_server_maintenance_password: password
+    galera_server_admin_password: password
+  galera:
+    master:
+      members:  ~

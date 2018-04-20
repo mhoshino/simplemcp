@@ -1,0 +1,12 @@
+applications:
+- linux
+classes:
+- system.linux.system.repo.mcp.openstack
+- system.linux.system.repo.mcp.extra
+parameters:
+  _param:
+    linux_system_codename: xenial
+  linux:
+    system:
+      enabled: true
+    
