@@ -1,13 +1,26 @@
+applications:
+- mysql.client
 classes:
-- system.galera.server.database.keystone
-#- system.keystone.server.wsgi
-#- system.keystone.server.single
-#- system.keystone.client.single
+- system.mysql.client.database.keystone
+- system.keystone.server.wsgi
+- system.keystone.server.single
+- system.keystone.client.single
 parameters:
   _param:
-    openstack_version: pike
-    admin_email: admin@admin.com
-    rabbitmq_openstack_password: password
+    cluster_public_host: ${_param:single_address}
     keystone_version: ${_param:openstack_version}
-    mysql_keystone_password: password
-
+    keystone_service_token: token
+    keystone_service_host: ${_param:single_address}
+    keystone_cinder_password: password
+    keystone_heat_password: password
+    keystone_glance_password: password
+    keystone_neutron_password: password
+    cinder_service_host: ${_param:single_address}
+    glance_service_host: ${_param:single_address}
+    heat_service_host: ${_param:single_address}
+    neutron_service_host: ${_param:single_address}
+  linux:
+    network:
+      hostname: ${linux:system:name}
+      enabled: true
+      fqdn: ${linux:system:name}.${linux:system:domain}

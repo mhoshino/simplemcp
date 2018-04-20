@@ -1,10 +1,18 @@
 classes:
 - service.galera.master.cluster
+- system.mysql.client
 parameters:
   _param:
     cluster_local_address: ${_param:single_address}
     galera_server_maintenance_password: password
     galera_server_admin_password: password
+    mysql_admin_user: root
+    mysql_admin_password: password
   galera:
     master:
       members:  ~
+  mysql:
+    server: ~
+    client:
+      enabled: true
+    

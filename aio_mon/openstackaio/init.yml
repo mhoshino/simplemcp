@@ -1,12 +1,13 @@
 classes:
 - cluster.mcpmhoshi.openstackaio.repo
 - cluster.mcpmhoshi.openstackaio.galera
-#- cluster.mcpmhoshi.openstackaio.rabbitmq
-#- cluster.mcpmhoshi.openstackaio.keystone
+- cluster.mcpmhoshi.openstackaio.rabbitmq
+- cluster.mcpmhoshi.openstackaio.keystone
 
 parameters:
   _param:
     openstack_version: pike
+    openstack_region: RegionOne
     admin_email: admin@admin.com
     rabbitmq_openstack_password: password
   galera:
@@ -14,3 +15,6 @@ parameters:
       members:
       - host: ${_param:single_address}
         port: 4567
+  mysql:
+    server:
+      version: "5.6"
