@@ -6,5 +6,7 @@ classes:
 parameters:
   _param:
     control_vip_address: ${_param:single_address}
+    postgresql_client_user: ${_param:postgresql_admin_user}
+    postgresql_client_password: ${_param:postgresql_admin_user_password}
     secmonkey_login_id: 11
     secmonkey_application_id: 1
