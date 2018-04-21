@@ -10,6 +10,7 @@ classes:
 - system.haproxy.proxy.listen.oss.security_monkey
 - system.haproxy.proxy.listen.oss.janitor_monkey
 - system.haproxy.proxy.listen.oss.mongodb
+- system.haproxy.proxy.listen.stacklight.influxdb
 parameters:
   _param:
     haproxy_bind_address: ${_param:cluster_vip_address}
@@ -33,4 +34,6 @@ parameters:
         janitor_monkey:
           servers: ~
         mongodb:
+          servers: ~
+        influxdb:
           servers: ~

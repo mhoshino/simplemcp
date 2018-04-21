@@ -6,6 +6,7 @@ classes:
 - cluster.mcpmhoshi.stacklight.haproxy_single
 - cluster.mcpmhoshi.stacklight.haproxy
 - cluster.mcpmhoshi.stacklight.grafana
+- cluster.mcpmhoshi.stacklight.influxdb
 - cluster.mcpmhoshi.stacklight.monitoring
 - cluster.mcpmhoshi.stacklight.elasticsearch
 - cluster.mcpmhoshi.stacklight.janitor_monkey
@@ -14,4 +15,5 @@ classes:
 - cluster.mcpmhoshi.stacklight.rundeck
 - cluster.mcpmhoshi.stacklight.security_monkey
 - cluster.mcpmhoshi.stacklight.devops_portal
+
 

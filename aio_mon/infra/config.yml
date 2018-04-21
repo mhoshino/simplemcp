@@ -14,6 +14,22 @@ parameters:
       data_source:
         engine: local
       node:
+        aio_node:
+          name: ${_param:stack_name}aio
+          domain: ${_param:domain}
+          environment: ${_param:salt_master_base_environment}
+          classes:
+          - cluster.${_param:stack_name}.openstackaio.repo
+          - cluster.${_param:stack_name}.openstackaio.galera
+          - cluster.${_param:stack_name}.openstackaio.rabbitmq
+          - cluster.${_param:stack_name}.openstackaio.keystone
+          - cluster.${_param:stack_name}.openstackaio.glance
+          - cluster.${_param:stack_name}.openstackaio.nova
+          - cluster.${_param:stack_name}.openstackaio.neutron
+          - cluster.${_param:stack_name}.openstackaio.horizon
+          - cluster.${_param:stack_name}.openstackaio.override
+          params:
+            single_address: 192.168.0.11
         mon_node:
           name: ${_param:stack_name}mon
           domain: ${_param:domain}
@@ -34,22 +50,6 @@ parameters:
           - cluster.${_param:stack_name}.stacklight.rundeck
           - cluster.${_param:stack_name}.stacklight.security_monkey
           - cluster.${_param:stack_name}.stacklight.devops_portal
-          params:
-            single_address: 192.168.0.11
-        aio_node:
-          name: ${_param:stack_name}aio
-          domain: ${_param:domain}
-          environment: ${_param:salt_master_base_environment}
-          classes:
-          - cluster.${_param:stack_name}.openstackaio.repo
-          - cluster.${_param:stack_name}.openstackaio.galera
-          - cluster.${_param:stack_name}.openstackaio.rabbitmq
-          - cluster.${_param:stack_name}.openstackaio.keystone
-          - cluster.${_param:stack_name}.openstackaio.glance
-          - cluster.${_param:stack_name}.openstackaio.nova
-          - cluster.${_param:stack_name}.openstackaio.neutron
-          - cluster.${_param:stack_name}.openstackaio.horizon
-          - cluster.${_param:stack_name}.openstackaio.override
           params:
             single_address: 192.168.0.12
   linux:

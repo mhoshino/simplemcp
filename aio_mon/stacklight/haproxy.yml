@@ -53,3 +53,9 @@ parameters:
           - host: ${_param:single_address}
             name: ${linux:system:name}
             port: 37017
+        influxdb:
+          servers:
+          - host: ${_param:single_address}
+            name: ${linux:system:name}
+            port: 8086
+            params: check

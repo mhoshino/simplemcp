@@ -11,6 +11,10 @@ parameters:
           storage: /srv/glusterfs/devops_portal
           bricks:
           - ${_param:single_address}:/srv/glusterfs/devops_portal
+        influxdb:
+          storage: /srv/glusterfs/influxdb
+          bricks:
+          - ${_param:single_address}:/srv/glusterfs/influxdb
         elasticsearch:
           storage: /srv/glusterfs/elasticsearch
           bricks:

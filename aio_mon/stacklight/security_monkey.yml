@@ -1,10 +1,9 @@
 classes:
-#- system.devops_portal.service.janitor_monkey
 - system.docker.swarm.stack.security_monkey
 parameters:
   _param:
     security_monkey_openstack:
       user: admin
       password: password
-      auth_url: http://192.168.0.12:35357/v3
+      auth_url: http://192.168.0.11:35357/v3
   

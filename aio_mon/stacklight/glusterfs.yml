@@ -13,6 +13,9 @@ parameters:
         devops_portal:
           path: /srv/volume/devops_portal
           server: ${_param:single_address}
+        influxdb:
+          path: /srv/volume/influxdb
+          server: ${_param:single_address}
         elasticsearch:
           path: /srv/volume/elasticsearch
           server: ${_param:single_address}

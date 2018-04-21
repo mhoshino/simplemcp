@@ -9,7 +9,7 @@ parameters:
     docker_image_remote_storage_adapter: docker-prod-local.artifactory.mirantis.com/openstack-docker/remote_storage_adapter:latest
     docker_image_prometheus_relay: docker-prod-local.artifactory.mirantis.com/openstack-docker/prometheus_relay:latest
 
-    stacklight_telemetry_address: 192.168.0.15
+    stacklight_telemetry_address: ${_param:single_address}
     influxdb_stacklight_password: password
     influxdb_port: 8086
     prometheus_influxdb_url: "http://${_param:stacklight_telemetry_address}:${_param:influxdb_port}/"

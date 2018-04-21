@@ -1,0 +1,7 @@
+classes:
+- system.docker.swarm.stack.influxdb
+parameters:
+  _param:
+     docker_influxdb_image: influxdb/latest
+     influxdb_admin_password: password
+     telegraf_remote_agent_influxdb_address: ${_param:single_address}
