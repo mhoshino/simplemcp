@@ -1,26 +1,22 @@
-applications:
-- mysql.client
 classes:
-- system.mysql.client.database.keystone
 - system.keystone.server.wsgi
 - system.keystone.server.single
 - system.keystone.client.single
+- system.keystone.client.service.nova21
+- system.keystone.client.service.nova-placement
 parameters:
   _param:
     cluster_public_host: ${_param:single_address}
     keystone_version: ${_param:openstack_version}
     keystone_service_token: token
-    keystone_service_host: ${_param:single_address}
     keystone_cinder_password: password
     keystone_heat_password: password
     keystone_glance_password: password
+    keystone_nova_password: password
     keystone_neutron_password: password
+    keystone_service_host: ${_param:single_address}
     cinder_service_host: ${_param:single_address}
     glance_service_host: ${_param:single_address}
     heat_service_host: ${_param:single_address}
     neutron_service_host: ${_param:single_address}
-  linux:
-    network:
-      hostname: ${linux:system:name}
-      enabled: true
-      fqdn: ${linux:system:name}.${linux:system:domain}
+    nova_service_host: ${_param:single_address}

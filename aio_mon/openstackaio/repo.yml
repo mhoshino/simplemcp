@@ -3,11 +3,7 @@ applications:
 classes:
 - system.linux.system.repo.mcp.openstack
 - system.linux.system.repo.mcp.extra
-- system.linux.system.repo.saltstack.xenial
 parameters:
   _param:
     linux_system_codename: xenial
-  linux:
-    system:
-      enabled: true
     

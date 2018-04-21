@@ -27,7 +27,15 @@ parameters:
           domain: ${_param:domain}
           environment: ${_param:salt_master_base_environment}
           classes:
-          - cluster.${_param:stack_name}.openstackaio
+          - cluster.${_param:stack_name}.openstackaio.repo
+          - cluster.${_param:stack_name}.openstackaio.galera
+          - cluster.${_param:stack_name}.openstackaio.rabbitmq
+          - cluster.${_param:stack_name}.openstackaio.keystone
+          - cluster.${_param:stack_name}.openstackaio.glance
+          - cluster.${_param:stack_name}.openstackaio.nova
+          - cluster.${_param:stack_name}.openstackaio.neutron
+          - cluster.${_param:stack_name}.openstackaio.horizon
+          - cluster.${_param:stack_name}.openstackaio.override
           params:
             single_address: 192.168.0.12
   linux:

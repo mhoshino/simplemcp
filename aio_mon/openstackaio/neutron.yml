@@ -1,0 +1,24 @@
+classes:
+- service.neutron.control.single
+- service.neutron.gateway.single
+- system.neutron.client.service.public
+parameters:
+  _param:
+     neutron_version: ${_param:openstack_version}
+     tenant_address: ${_param:single_address}
+     openstack_public_neutron_subnet_cidr: 192.168.0.0/24
+     openstack_public_neutron_subnet_allocation_start: 192.168.0.150
+     openstack_public_neutron_subnet_allocation_end: 192.168.0.200
+     openstack_public_neutron_subnet_gateway: 192.168.0.1
+  neutron:
+    gateway:
+      agent_mode: dvr_snat
+      dvr: True
+    server:
+      backend:
+        engine: ml2
+        tenant_network_types: "flat,vxlan"
+        mechanism:
+          ovs:
+            driver: openvswitch
+

@@ -1,0 +1,7 @@
+classes:
+- system.horizon.server.single
+- system.horizon.server.plugin.theme
+parameters:
+  _param:
+    horizon_secret_key: password
+
