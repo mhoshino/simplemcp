@@ -1,0 +1,10 @@
+classes:
+- system.docker.swarm.stack.postgresql
+- system.postgresql.client.pushkin
+- system.postgresql.client.rundeck
+- system.postgresql.client.security_monkey
+parameters:
+  _param:
+    control_vip_address: ${_param:single_address}
+    secmonkey_login_id: 11
+    secmonkey_application_id: 1

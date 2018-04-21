@@ -1,0 +1,36 @@
+applications:
+- haproxy
+classes:
+- system.haproxy.proxy.single
+- system.haproxy.proxy.listen.oss.devops_portal
+- system.haproxy.proxy.listen.oss.elasticsearch
+- system.haproxy.proxy.listen.oss.postgresql
+- system.haproxy.proxy.listen.oss.pushkin
+- system.haproxy.proxy.listen.oss.rundeck
+- system.haproxy.proxy.listen.oss.security_monkey
+- system.haproxy.proxy.listen.oss.janitor_monkey
+- system.haproxy.proxy.listen.oss.mongodb
+parameters:
+  _param:
+    haproxy_bind_address: ${_param:cluster_vip_address}
+  haproxy:
+    proxy:
+      listen:
+        devops_portal:
+          servers: ~
+        elasticsearch_http:
+          servers: ~
+        elasticsearch_binary:
+          servers: ~
+        postgresql:
+          servers: ~
+        pushkin:
+          servers: ~
+        rundeck:
+          servers: ~
+        security_monkey:
+          servers: ~
+        janitor_monkey:
+          servers: ~
+        mongodb:
+          servers: ~

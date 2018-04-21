@@ -1,0 +1,6 @@
+classes:
+- system.docker.swarm.stack.pushkin
+parameters:
+  _param:
+    pushkin_db_user: pushkin
+    pushkin_db_user_password: pushkin

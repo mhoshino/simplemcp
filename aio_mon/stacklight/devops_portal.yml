@@ -1,0 +1,8 @@
+classes:
+- system.docker.swarm.stack.devops_portal
+- service.devops_portal.config
+- system.devops_portal.service.elasticsearch
+- system.devops_portal.service.janitor_monkey
+- system.devops_portal.service.pushkin
+- system.devops_portal.service.rundeck
+- system.devops_portal.service.security_monkey

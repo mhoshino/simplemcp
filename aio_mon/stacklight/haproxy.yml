@@ -1,0 +1,55 @@
+parameters:
+  haproxy:
+    proxy:
+      listen:
+        devops_portal:
+          servers: 
+          - host: ${_param:single_address}
+            name: ${linux:system:name}
+            port: 18800
+        elasticsearch_http:
+          servers:
+          - host: ${_param:single_address}
+            name: ${linux:system:name}
+            port: 19200
+            params: check
+        elasticsearch_binary:
+          servers:
+          - host: ${_param:single_address}
+            name: ${linux:system:name}
+            port: 19300
+            params: check
+        postgresql:
+          servers: 
+          - host: ${_param:single_address}
+            name: ${linux:system:name}
+            port: 15432
+            params: check port 15432
+        pushkin:
+          servers: 
+          - host: ${_param:single_address}
+            name: ${linux:system:name}
+            port: 18887
+            params: check
+        rundeck:
+          servers: 
+          - host: ${_param:single_address}
+            name: ${linux:system:name}
+            port: 14440 
+            params: check
+        security_monkey:
+          servers:
+          - host: ${_param:single_address}
+            name: ${linux:system:name}
+            port: 15001
+            params: check
+        janitor_monkey:
+          servers:
+          - host: ${_param:single_address}
+            name: ${linux:system:name}
+            port: 18088
+        mongodb:
+          servers:
+          - host: ${_param:single_address}
+            name: ${linux:system:name}
+            port: 37017
