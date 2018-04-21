@@ -1,0 +1,33 @@
+classes:
+- system.glusterfs.server.cluster
+parameters:
+  _param:
+    glusterfs_service_host: ${_param:single_address}
+  glusterfs:
+    server:
+      peers: ~
+      volumes:
+        devops_portal:
+          storage: /srv/glusterfs/devops_portal
+          bricks:
+          - ${_param:single_address}:/srv/glusterfs/devops_portal
+        postgresql:
+          storage: /srv/glusterfs/postgresql
+          bricks:
+          - ${_param:single_address}:/srv/glusterfs/postgresql
+        pushkin:
+          storage: /srv/glusterfs/pushkin
+          bricks:
+          - ${_param:single_address}:/srv/glusterfs/pushkin
+        rundeck:
+          storage: /srv/glusterfs/rundeck
+          bricks:
+          - ${_param:single_address}:/srv/glusterfs/rundeck
+        security_monkey:
+          storage: /srv/glusterfs/security_monkey
+          bricks:
+          - ${_param:single_address}:/srv/glusterfs/security_monkey
+        mongodb:
+          storage: /srv/glusterfs/mongodb
+          bricks:
+          - ${_param:single_address}:/srv/glusterfs/mongodb

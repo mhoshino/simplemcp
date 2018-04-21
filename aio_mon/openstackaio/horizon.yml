@@ -4,4 +4,11 @@ classes:
 parameters:
   _param:
     horizon_secret_key: password
-
+    horizon_identity_encryption: none
+    horizon_identity_version: 2
+    horizon_identity_host: ${_param:single_address}
+  horizon:
+    server:
+      secure: False
+      api_versions:
+        identity: 3

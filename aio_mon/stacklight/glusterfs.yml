@@ -1,0 +1,30 @@
+applications:
+- glusterfs.server.service
+- glusterfs.server.setup
+- glusterfs.client
+parameters:
+  glusterfs:
+    server:
+      peers: 
+      - ${_param:single_address}
+    client:
+      enabled: true
+      volumes:
+        devops_portal:
+          path: /srv/volume/devops_portal
+          server: ${_param:single_address}
+        postgresql:
+          path: /srv/volume/postgresql
+          server: ${_param:single_address}
+        pushkin:
+          path: /srv/volume/pushkin
+          server: ${_param:single_address}
+        rundeck:
+          path: /srv/volume/rundeck
+          server: ${_param:single_address}
+        security_monkey:
+          path: /srv/volume/security_monkey
+          server: ${_param:single_address}
+        mongodb:
+          path: /srv/volume/security_mongodb
+          server: ${_param:single_address}

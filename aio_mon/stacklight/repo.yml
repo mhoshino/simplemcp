@@ -1,0 +1,11 @@
+application:
+- linux.system.repo
+classes:
+- system.linux.system.repo.glusterfs
+- system.linux.system.repo.docker
+parameters:
+  _param:
+    linux_system_codename: xenial
+  linux:
+    system:
+      enabled: true
