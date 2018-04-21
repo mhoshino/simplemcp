@@ -15,5 +15,4 @@ classes:
 - cluster.mcpmhoshi.stacklight.rundeck
 - cluster.mcpmhoshi.stacklight.security_monkey
 - cluster.mcpmhoshi.stacklight.devops_portal
-
-
+- cluster.mcpmhoshi.stacklight.override

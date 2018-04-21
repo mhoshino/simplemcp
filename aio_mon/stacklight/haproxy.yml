@@ -57,5 +57,5 @@ parameters:
           servers:
           - host: ${_param:single_address}
             name: ${linux:system:name}
-            port: 8086
+            port: 25016
             params: check

@@ -1,0 +1,9 @@
+parameters:
+  docker:
+    client:
+      stack:
+        influxdb:
+          service:
+            server:
+              ports:
+              - 25016:8086
