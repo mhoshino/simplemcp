@@ -42,6 +42,7 @@ parameters:
           - cluster.${_param:stack_name}.stacklight.haproxy_single
           - cluster.${_param:stack_name}.stacklight.haproxy
           - cluster.${_param:stack_name}.stacklight.grafana
+          - cluster.${_param:stack_name}.stacklight.influxdb
           - cluster.${_param:stack_name}.stacklight.monitoring
           - cluster.${_param:stack_name}.stacklight.elasticsearch
           - cluster.${_param:stack_name}.stacklight.janitor_monkey
@@ -50,6 +51,7 @@ parameters:
           - cluster.${_param:stack_name}.stacklight.rundeck
           - cluster.${_param:stack_name}.stacklight.security_monkey
           - cluster.${_param:stack_name}.stacklight.devops_portal
+          - cluster.${_param:stack_name}.stacklight.override
           params:
             single_address: 192.168.0.12
   linux:
