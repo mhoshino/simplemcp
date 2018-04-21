@@ -19,7 +19,21 @@ parameters:
           domain: ${_param:domain}
           environment: ${_param:salt_master_base_environment}
           classes:
-          - cluster.${_param:stack_name}.stacklight
+          - cluster.${_param:stack_name}.stacklight.repo
+          - cluster.${_param:stack_name}.stacklight.glusterfs_single
+          - cluster.${_param:stack_name}.stacklight.glusterfs
+          - cluster.${_param:stack_name}.stacklight.docker
+          - cluster.${_param:stack_name}.stacklight.haproxy_single
+          - cluster.${_param:stack_name}.stacklight.haproxy
+          - cluster.${_param:stack_name}.stacklight.grafana
+          - cluster.${_param:stack_name}.stacklight.monitoring
+          - cluster.${_param:stack_name}.stacklight.elasticsearch
+          - cluster.${_param:stack_name}.stacklight.janitor_monkey
+          - cluster.${_param:stack_name}.stacklight.postgresql
+          - cluster.${_param:stack_name}.stacklight.pushkin
+          - cluster.${_param:stack_name}.stacklight.rundeck
+          - cluster.${_param:stack_name}.stacklight.security_monkey
+          - cluster.${_param:stack_name}.stacklight.devops_portal
           params:
             single_address: 192.168.0.11
         aio_node:
