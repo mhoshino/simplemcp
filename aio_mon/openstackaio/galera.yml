@@ -1,5 +1,3 @@
-applications:
-- mysql.client
 classes:
 - service.galera.master.cluster
 - system.mysql.client
