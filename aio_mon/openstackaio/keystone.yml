@@ -1,7 +1,4 @@
-applications:
-- mysql.client
 classes:
-- system.keystone.server.wsgi
 - system.keystone.server.single
 - system.keystone.client.single
 - system.keystone.client.service.nova21
@@ -22,3 +19,7 @@ parameters:
     heat_service_host: ${_param:single_address}
     neutron_service_host: ${_param:single_address}
     nova_service_host: ${_param:single_address}
+  # Prevent keystone from addding python-keystone
+  linux:
+   system:
+    package: ~
