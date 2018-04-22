@@ -22,7 +22,7 @@ parameters:
       version: "5.7"
     client:
       enabled: true
-  # lower-priority of  5.6 clients
+  # lower-priority of mirantis mysql clients
   linux:
     system:
       repo:
