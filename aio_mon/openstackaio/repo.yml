@@ -1,5 +1,6 @@
 applications:
 - linux
+- linux.system.repo
 classes:
 - system.linux.system.repo.mcp.openstack
 - system.linux.system.repo.mcp.extra
