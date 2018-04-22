@@ -1,3 +1,5 @@
+applications:
+- mysql.client
 classes:
 - system.keystone.server.wsgi
 - system.keystone.server.single
