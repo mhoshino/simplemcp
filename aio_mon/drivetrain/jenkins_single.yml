@@ -1,16 +1,15 @@
 classes:
 - system.docker.swarm.stack.jenkins
-#- system.jenkins.master.config
-#- system.jenkins.client
-#- system.jenkins.client.credential.gerrit
-#- system.jenkins.client.credential.salt
-#- system.jenkins.client.job.git-mirrors.downstream.pipelines
-#- system.jenkins.client.job.deploy.openstack
-#- system.jenkins.client.job.deploy.update
-#- system.jenkins.client.job.ceph
-#- system.jenkins.client.security.ldap
-#- system.jenkins.client.security.matrix
-#- system.jenkins.client.node
+- system.jenkins.master.config
+- system.jenkins.client
+- system.jenkins.client.credential.gerrit
+- system.jenkins.client.credential.salt
+- system.jenkins.client.job.git-mirrors.downstream.pipelines
+- system.jenkins.client.job.deploy.openstack
+- system.jenkins.client.job.deploy.update
+- system.jenkins.client.security.ldap
+- system.jenkins.client.security.matrix
+- system.jenkins.client.node
 parameters:
   _param:
     jenkins_slave_user: admin

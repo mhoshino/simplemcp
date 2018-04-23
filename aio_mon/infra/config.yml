@@ -1,5 +1,6 @@
 classes:
 - system.salt.master.pkg
+- system.salt.master.api
 - system.openssh.server.single
 - system.reclass.storage.salt
 parameters:
@@ -9,6 +10,8 @@ parameters:
     reclass_data_revision: master
     linux_repo_refresh_db: true
     salt_master_base_environment: prd
+    salt_api_password_hash: "$6$sDHRYFYZ$cFRDr/jshAF/oT9uMAfV7vPTANQkna7ff83SoiD4XQaXRz1v2EYpr8pXVa81ZrBGB6XnpEhK5kwbPQHBekm3o/"
+    salt_api_password: vyaPRQXnMsLCKCSlsTind9td59bCB8iR
     salt_master_host: 192.168.0.10
     aio_address: 192.168.0.11
     mon_address: 192.168.0.12
@@ -83,6 +86,7 @@ parameters:
             single_address: ${_param:cid_address}
             salt_master_host: ${_param:salt_master_host}
             cluster_name: ${_param:stack_name}
+            salt_api_password: ${_param:salt_api_password}
   linux:
     system:
       enabled: true
