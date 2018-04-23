@@ -9,7 +9,6 @@ classes:
 parameters:
   _param:
     haproxy_bind_address: ${_param:cluster_vip_address}
-    cluster_node01_name: ${linux:system.name}
   haproxy:
     proxy:
       listen:
