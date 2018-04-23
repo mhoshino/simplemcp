@@ -1,0 +1,21 @@
+applications:
+- glusterfs.server.service
+- glusterfs.server.setup
+- glusterfs.client
+parameters:
+  glusterfs:
+    server:
+      peers: 
+      - ${_param:single_address}
+    client:
+      enabled: true
+      volumes:
+        jenkins:
+          path: /srv/volume/jenkins
+          server: ${_param:single_address}
+        gerrit:
+          path: /srv/volume/gerrit
+          server: ${_param:single_address}
+        openldap:
+          path: /srv/volume/openldap
+          server: ${_param:single_address}

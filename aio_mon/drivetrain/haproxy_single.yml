@@ -1,0 +1,21 @@
+applications:
+- haproxy
+classes:
+- system.haproxy.proxy.single
+- system.haproxy.proxy.listen.cicd.gerrit
+- system.haproxy.proxy.listen.cicd.jenkins
+- system.haproxy.proxy.listen.openldap
+- system.haproxy.proxy.listen.phpldapadmin
+parameters:
+  _param:
+    haproxy_bind_address: ${_param:cluster_vip_address}
+    cluster_node01_name: ${linux:system.name}
+  haproxy:
+    proxy:
+      listen:
+        openldap:
+          servers: ~
+        openldap_ssl:
+          servers: ~
+        phpldapadmin:
+          servers: ~

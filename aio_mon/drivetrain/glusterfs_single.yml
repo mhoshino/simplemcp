@@ -1,0 +1,21 @@
+classes:
+- system.glusterfs.server.cluster
+parameters:
+  _param:
+    glusterfs_service_host: ${_param:single_address}
+  glusterfs:
+    server:
+      peers: ~
+      volumes:
+        jenkins:
+          storage: /srv/glusterfs/jenkins
+          bricks:
+          - ${_param:single_address}:/srv/glusterfs/jenkins
+        gerrit:
+          storage: /srv/glusterfs/gerrit
+          bricks:
+          - ${_param:single_address}:/srv/glusterfs/gerrit
+        openldap:
+          storage: /srv/glusterfs/openldap
+          bricks:
+          - ${_param:single_address}:/srv/glusterfs/openldap

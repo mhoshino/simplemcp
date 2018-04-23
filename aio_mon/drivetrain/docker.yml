@@ -1,0 +1,16 @@
+applications:
+- docker.host
+- docker.swarm
+classes:
+- system.docker.host
+- system.docker.swarm.master
+- system.docker.swarm.network.oss_backend
+parameters:
+  _param:
+    cluster_vip_address: ${_param:single_address}
+    cluster_public_host: ${_param:single_address}
+    cluster_node01_address: ${_param:single_address}
+    stacklight_monitor_address: ${_param:single_address}
+  docker:
+    client:
+     enabled: true

@@ -1,0 +1,60 @@
+classes:
+- system.docker.swarm.stack.jenkins
+- system.jenkins.master.config
+- system.jenkins.client
+- system.jenkins.client.credential.gerrit
+- system.jenkins.client.credential.salt
+- system.jenkins.client.job.git-mirrors.downstream.pipelines
+- system.jenkins.client.job.deploy.openstack
+- system.jenkins.client.job.deploy.update
+- system.jenkins.client.job.ceph
+- system.jenkins.client.security.ldap
+- system.jenkins.client.security.matrix
+- system.jenkins.client.node
+parameters:
+  _param:
+    jenkins_slave_user: admin
+    jenkins_client_user: admin
+    jenkins_slave_password: ${_param:jenkins_admin_password}
+    jenkins_client_password: ${_param:jenkins_admin_password}
+    jenkins_admin_email: ${_param:admin_email}
+    jenkins_admin_public_key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDiav++qbteVw4EzM7SNBpjMxqjiHJRys8/JfHKUDrSB2y4kusfMjToOiEAiMrHbZwyViuTKT+SFFZKP5p1CCnBXDi7t9hUSN6JpFUiSHandcm6zSeSmJ1dOGZwnZs8l4ug75MFdFT03rPMVGvX7ShG4TB4dXuUB2CHplBLx/iPT2qq+WXsr/pVuGYZRlVuV3WogXZxRvbCWGCaWAjI2P2epi7HdKp3fwLxMPJ46C7CkrPYoSuxiUeyWEzN6nTYu9kF2QPlmrM3D1pUVsUntTzITHLf0s5M1Um/Dw+k30419/W9TmR87aRqW152ieiy8Y21xHtJ/OVF/VP84HTboz3l
+    jenkins_admin_private_key: |
+      -----BEGIN RSA PRIVATE KEY-----
+      MIIEowIBAAKCAQEA4mr/vqm7XlcOBMzO0jQaYzMao4hyUcrPPyXxylA60gdsuJLr
+      HzI06DohAIjKx22cMlYrkyk/khRWSj+adQgpwVw4u7fYVEjeiaRVIkh2p3XJus0n
+      kpidXThmcJ2bPJeLoO+TBXRU9N6zzFRr1+0oRuEweHV7lAdgh6ZQS8f4j09qqvll
+      7K/6VbhmGUZVbld1qIF2cUb2wlhgmlgIyNj9nqYux3Sqd38C8TDyeOguwpKz2KEr
+      sYlHslhMzep02LvZBdkD5ZqzNw9aVFbFJ7U8yExy39LOTNVJvw8PpN9ONff1vU5k
+      fO2kaltedonosvGNtcR7SfzlRf1T/OB026M95QIDAQABAoIBADuz3SXoWajBqceo
+      Paz94itgMVkHxKU+pjFPjxc62pfBL3DoBKmgMoU9trAOYfH+PB6lzC2sxb9+L1a6
+      uL69XU1IRQlyq89lu5BtzakRlIAJthzUteeY6H3JPnHZjTKH/2B7a7gXecNr6dsq
+      M5mnRmSSQpaw29onq9N5Dlk9LJSU7F1tEGukiyvUKhsttbztNzkJpYYRjB8MnpsO
+      SOFpUZM9ja3zZ0m7oB+umFP9MPUS9mSFGD6sL4oOTg02WAHN8EfaiZ6hfUhxVtNI
+      36vnO9FUrU4KNDBDstOHKm/9kiWx5GrN5CajNtYpfEwCOp9+EGRZDzsi2R1ta6g3
+      Z85wdo0CgYEA9SgUGJ1QyxiRmH0XJj1kB9iL/qEJ6NEHDmvFOasx0iEldTHUYwEK
+      pM5qWOHx2AfBWcp3eNW8BcB1e50RNKnK8jfQMaMOXCcxV4aw117mE/+meDdBzTCu
+      YOSLa2CkuQTnbvcbLx5lHqi9mZWIjwRAV1TEOsMWkHXT8wCZqo74Hm8CgYEA7G6+
+      DBp09rugz9eIIOp7SRl/Tbdk+asWqbFaS3QxdVgnqiQPodNp1k1XJ4dEPwYDvfBO
+      N/NdSmKfXhu7npr3F7GnUtuALdm+HM6wiUoyGxolvXdYz8XGApjMtGG89VhZwAyq
+      W5iknhcO9KlTniCDM7TPyXqlvR03Rekx+e28kusCgYA2zysPBbzWazvB19WhGwCO
+      MH+8AczxXCozsyx45ClTTU3OkcFmEQmMJwnnrTwgjDtSE836Ge7balfZtxftqjhR
+      RuEo98dyGuERLG/E9taBihpxrgjsEwIpb28sJoMtSkdjq6NMOYNqA1fASoopT04D
+      OFRWvt8AlRc5sNyqISSfyQKBgQDYXuB9oxi3VC5vBwgFV5FL7JGcReGauwAae7vu
+      oX9BrFNgWXAU4K1S+aRxAFFse8yg3nI2sfkGQgsmzKp/E8JdZK+EHGzJiSN6qYzV
+      l5kTRHKVWctlGdGEPuHXkjqjLR+1qeGdwaulIeUF8pAbfhWUFDy0XhGfaEVVLXwX
+      BYI10QKBgHnWCCewS5Hu9FsCuLPqXg95U0lBPOq0kZ0/pL/fjrsa9ItdzthNkctY
+      voY0LzZdm6JyA4DOBCX6fBZD0Cm8VkCwXKyiYz7YqLATje/7iVx396iwnZCP7hBU
+      U9sXObaMfOPdl8uZGpdt0vxG54aK4ARGpv4LpfPrfyIw7Vq4q4Z/
+      -----END RSA PRIVATE KEY-----
+    jenkins_gerrit_url: ssh://admin@${_param:haproxy_gerrit_bind_host}:${_param:haproxy_gerrit_ssh_bind_port}
+    jenkins_admin_password: ${_param:openldap_admin_password}
+    jenkins_security_ldap_server: ${_param:cicd_control_address}
+    jenkins_security_ldap_root_dn: ${_param:openldap_dn}
+    jenkins_security_ldap_manager_dn: "cn=admin,${_param:openldap_dn}"
+    jenkins_security_ldap_manager_password: ${_param:openldap_admin_password}
+  docker:
+    client:
+      stack:
+        jenkins:
+          service: ~

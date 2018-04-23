@@ -1,0 +1,21 @@
+parameters:
+  haproxy:
+    proxy:
+      listen:
+        openldap:
+          servers: 
+          - host: ${_param:single_address}
+            name: ${linux:system:name}
+            port: 1389
+        openldap_ssl:
+          servers:
+          - host: ${_param:single_address}
+            name: ${linux:system:name}
+            port: 1636
+            params: check
+        phpldapadmin:
+          servers:
+          - host: ${_param:single_address}
+            name: ${linux:system:name}
+            port: 18089
+            params: check

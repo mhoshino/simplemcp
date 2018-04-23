@@ -9,6 +9,10 @@ parameters:
     reclass_data_revision: master
     linux_repo_refresh_db: true
     salt_master_base_environment: prd
+    salt_master_host: 192.168.0.10
+    aio_address: 192.168.0.11
+    mon_address: 192.168.0.12
+    cid_address: 192.168.0.13
   reclass:
     storage:
       data_source:
@@ -19,6 +23,7 @@ parameters:
           domain: ${_param:domain}
           environment: ${_param:salt_master_base_environment}
           classes:
+          - cluster.${_param:stack_name}.infra.salt-minion
           - cluster.${_param:stack_name}.openstackaio.repo
           - cluster.${_param:stack_name}.openstackaio.mysql
           - cluster.${_param:stack_name}.openstackaio.rabbitmq
@@ -29,12 +34,14 @@ parameters:
           - cluster.${_param:stack_name}.openstackaio.horizon
           - cluster.${_param:stack_name}.openstackaio.override
           params:
-            single_address: 192.168.0.11
+            single_address: ${_param:aio_address}
+            salt_master_host: ${_param:salt_master_host}
         mon_node:
           name: ${_param:stack_name}mon
           domain: ${_param:domain}
           environment: ${_param:salt_master_base_environment}
           classes:
+          - cluster.${_param:stack_name}.infra.salt-minion
           - cluster.${_param:stack_name}.stacklight.repo
           - cluster.${_param:stack_name}.stacklight.glusterfs_single
           - cluster.${_param:stack_name}.stacklight.glusterfs
@@ -53,7 +60,28 @@ parameters:
           - cluster.${_param:stack_name}.stacklight.devops_portal
           - cluster.${_param:stack_name}.stacklight.override
           params:
-            single_address: 192.168.0.12
+            single_address: ${_param:mon_address}
+            salt_master_host: ${_param:salt_master_host}
+        cid_node:
+          name: ${_param:stack_name}cid
+          domain: ${_param:domain}
+          environment: ${_param:salt_master_base_environment}
+          classes:
+          - cluster.${_param:stack_name}.infra.salt-minion
+          - cluster.${_param:stack_name}.drivetrain.repo
+          - cluster.${_param:stack_name}.drivetrain.glusterfs_single
+          - cluster.${_param:stack_name}.drivetrain.glusterfs
+          - cluster.${_param:stack_name}.drivetrain.docker
+          - cluster.${_param:stack_name}.drivetrain.haproxy_single
+          - cluster.${_param:stack_name}.drivetrain.haproxy
+          - cluster.${_param:stack_name}.drivetrain.openldap
+          - cluster.${_param:stack_name}.drivetrain.gerrit
+          - cluster.${_param:stack_name}.drivetrain.jenkins_single
+          - cluster.${_param:stack_name}.drivetrain.jenkins
+          - cluster.${_param:stack_name}.drivetrain.override
+          params:
+            single_address: ${_param:cid_address}
+            salt_master_host: ${_param:salt_master_host}
   linux:
     system:
       enabled: true
