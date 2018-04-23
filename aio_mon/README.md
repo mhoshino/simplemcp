@@ -7,8 +7,8 @@ salt-call state.apply
 # Configure AIO openstack node
 ```
 salt-call state.apply linux
-salt-call state.apply mysql
-salt-call state.apply mysql # Yes do this twice
+salt-call state.apply mysql.server
+salt-call state.apply mysql.client
 salt-call state.apply rabbitmq
 salt-call state.apply
 ```
