@@ -82,6 +82,7 @@ parameters:
           params:
             single_address: ${_param:cid_address}
             salt_master_host: ${_param:salt_master_host}
+            cluster_name: ${_param:stack_name}
   linux:
     system:
       enabled: true
