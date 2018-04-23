@@ -3,3 +3,4 @@ parameters:
     admin_email: admin@admin.com
     control_vip_address: ${_param:single_address}
     cluster_node01_name: ${linux:system:name}
+    common_password: password

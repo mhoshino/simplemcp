@@ -2,8 +2,8 @@ classes:
 - system.docker.swarm.stack.gerrit
 parameters:
   _param:
-    mysql_admin_password: password
-    mysql_gerrit_password: password
+    mysql_admin_password: ${_param:common_password}
+    mysql_gerrit_password: ${_param:common_password}
     gerrit_admin_email: ${_param:admin_email}
     gerrit_public_host: https://${_param:haproxy_gerrit_bind_host}:${_param:haproxy_gerrit_bind_port}
     gerrit_admin_public_key: ${_param:jenkins_admin_public_key}

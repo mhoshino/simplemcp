@@ -3,7 +3,7 @@ classes:
 parameters:
   _param:
      docker_influxdb_image: influxdb:latest
-     influxdb_admin_password: password
+     influxdb_admin_password: ${_param:common_password}
      telegraf_remote_agent_influxdb_address: ${_param:single_address}
   docker:
     client:

@@ -1,4 +1,6 @@
 parameters:
+  _param:
+    common_password: password
   docker:
     client:
       stack:

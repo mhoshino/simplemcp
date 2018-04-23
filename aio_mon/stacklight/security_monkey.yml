@@ -4,6 +4,6 @@ parameters:
   _param:
     security_monkey_openstack:
       user: admin
-      password: password
+      password: ${_param:common_password}
       auth_url: http://192.168.0.11:35357/v3
   

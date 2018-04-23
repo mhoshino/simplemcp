@@ -3,4 +3,4 @@ classes:
 parameters:
   _param:
     docker_image_grafana: grafana/grafana:4.5.2
-    grafana_admin_password: password
+    grafana_admin_password: ${_param:common_password}

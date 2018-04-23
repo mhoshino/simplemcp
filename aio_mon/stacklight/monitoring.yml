@@ -10,7 +10,7 @@ parameters:
     docker_image_prometheus_relay: docker-prod-local.artifactory.mirantis.com/openstack-docker/prometheus_relay:latest
 
     stacklight_telemetry_address: ${_param:single_address}
-    influxdb_stacklight_password: password
+    influxdb_stacklight_password: ${_param:common_password}
     influxdb_port: 8086
     prometheus_influxdb_url: "http://${_param:stacklight_telemetry_address}:${_param:influxdb_port}/"
     prometheus_influxdb_db: prometheus

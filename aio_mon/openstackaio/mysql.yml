@@ -10,12 +10,12 @@ parameters:
   _param:
     cluster_local_address: ${_param:single_address}
     mysql_admin_user: root
-    mysql_admin_password: password
-    mysql_client_password: password
-    mysql_keystone_password: password
-    mysql_glance_password: password
-    mysql_nova_password: password
-    mysql_neutron_password: password
+    mysql_admin_password: ${_param:common_password}
+    mysql_client_password: ${_param:common_password}
+    mysql_keystone_password: ${_param:common_password}
+    mysql_glance_password: ${_param:common_password}
+    mysql_nova_password: ${_param:common_password}
+    mysql_neutron_password: ${_param:common_password}
     
   mysql:
     server:
