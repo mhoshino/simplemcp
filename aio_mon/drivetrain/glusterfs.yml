@@ -11,13 +11,16 @@ parameters:
       enabled: true
       volumes:
         jenkins:
-          path: /srv/volume/jenkins
+          path: /srv/volumes/jenkins
           server: ${_param:single_address}
           user: 1000
           group: 1000
         gerrit:
-          path: /srv/volume/gerrit
+          path: /srv/volumes/gerrit
           server: ${_param:single_address}
         openldap:
-          path: /srv/volume/openldap
+          path: /srv/volumes/openldap
+          server: ${_param:single_address}
+        kqueen:
+          path: /srv/volumes/kqueen
           server: ${_param:single_address}

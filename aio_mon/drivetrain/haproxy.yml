@@ -25,3 +25,15 @@ parameters:
             name: ${linux:system:name}
             port: 13306
             params: check
+        kqueen_api:
+          servers:
+          - host: ${_param:single_address}
+            name: ${linux:system:name}
+            port: 15000
+            params: check
+        kqueen_ui:
+          servers:
+          - host: ${_param:single_address}
+            name: ${linux:system:name}
+            port: 15080
+            params: check

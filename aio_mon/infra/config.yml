@@ -12,7 +12,7 @@ parameters:
     salt_master_base_environment: prd
     salt_api_password_hash: "$6$sDHRYFYZ$cFRDr/jshAF/oT9uMAfV7vPTANQkna7ff83SoiD4XQaXRz1v2EYpr8pXVa81ZrBGB6XnpEhK5kwbPQHBekm3o/"
     salt_api_password: vyaPRQXnMsLCKCSlsTind9td59bCB8iR
-    salt_master_host: 192.168.0.10
+    salt_master_ip: 192.168.0.10
     aio_address: 192.168.0.11
     mon_address: 192.168.0.12
     cid_address: 192.168.0.13
@@ -39,7 +39,7 @@ parameters:
           - cluster.${_param:stack_name}.openstackaio.override
           params:
             single_address: ${_param:aio_address}
-            salt_master_host: ${_param:salt_master_host}
+            salt_master_host: ${_param:salt_master_ip}
             cluster_name: ${_param:stack_name}
             cluster_domain: ${_param:stack_name}.${_param:domain}
         mon_node:
@@ -66,7 +66,7 @@ parameters:
           - cluster.${_param:stack_name}.stacklight.override
           params:
             single_address: ${_param:mon_address}
-            salt_master_host: ${_param:salt_master_host}
+            salt_master_host: ${_param:salt_master_ip}
             cluster_name: ${_param:stack_name}
             cluster_domain: ${_param:stack_name}.${_param:domain}
         cid_node:
@@ -89,7 +89,7 @@ parameters:
           - cluster.${_param:stack_name}.drivetrain.override
           params:
             single_address: ${_param:cid_address}
-            salt_master_host: ${_param:salt_master_host}
+            salt_master_host: ${_param:salt_master_ip}
             cluster_domain: ${_param:stack_name}.${_param:domain}
             cluster_name: ${_param:stack_name}
             salt_api_password: ${_param:salt_api_password}

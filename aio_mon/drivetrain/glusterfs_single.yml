@@ -19,3 +19,7 @@ parameters:
           storage: /srv/glusterfs/openldap
           bricks:
           - ${_param:single_address}:/srv/glusterfs/openldap
+        kqueen:
+          storage: /srv/glusterfs/kqueen
+          bricks:
+          - ${_param:single_address}:/srv/glusterfs/kqueen

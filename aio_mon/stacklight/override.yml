@@ -1,11 +1,9 @@
 parameters:
   _param:
     common_password: password
-  docker:
-    client:
-      stack:
-        influxdb:
-          service:
-            server:
-              ports:
-              - 25016:8086
+    docker_influxdb_image: influxdb:latest
+    influxdb_admin_password: ${_param:common_password}
+    telegraf_remote_agent_influxdb_address: ${_param:single_address}
+    elasticsearch_cluster_name: test
+    elasticsearch_bind_host: 192.168.0.14
+    elasticsearch_binary_bind_port: 9200

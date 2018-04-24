@@ -11,3 +11,7 @@ parameters:
       package:
         ca-certificates-java:
           version: latest
+      directory:
+        /var/lib/jenkins:
+          group: 10000
+          user: 10000
