@@ -27,6 +27,7 @@ parameters:
           environment: ${_param:salt_master_base_environment}
           classes:
           - cluster.${_param:stack_name}.infra.salt-minion
+          - cluster.${_param:stack_name}.infra.telegraf
           - cluster.${_param:stack_name}.openstackaio.repo
           - cluster.${_param:stack_name}.openstackaio.mysql
           - cluster.${_param:stack_name}.openstackaio.rabbitmq
@@ -39,12 +40,15 @@ parameters:
           params:
             single_address: ${_param:aio_address}
             salt_master_host: ${_param:salt_master_host}
+            cluster_name: ${_param:stack_name}
+            cluster_domain: ${_param:stack_name}.${_param:domain}
         mon_node:
           name: ${_param:stack_name}mon
           domain: ${_param:domain}
           environment: ${_param:salt_master_base_environment}
           classes:
           - cluster.${_param:stack_name}.infra.salt-minion
+          - cluster.${_param:stack_name}.infra.telegraf
           - cluster.${_param:stack_name}.stacklight.repo
           - cluster.${_param:stack_name}.stacklight.glusterfs_single
           - cluster.${_param:stack_name}.stacklight.glusterfs
@@ -52,9 +56,7 @@ parameters:
           - cluster.${_param:stack_name}.stacklight.haproxy_single
           - cluster.${_param:stack_name}.stacklight.haproxy
           - cluster.${_param:stack_name}.stacklight.grafana
-          - cluster.${_param:stack_name}.stacklight.influxdb
           - cluster.${_param:stack_name}.stacklight.monitoring
-          - cluster.${_param:stack_name}.stacklight.elasticsearch
           - cluster.${_param:stack_name}.stacklight.janitor_monkey
           - cluster.${_param:stack_name}.stacklight.postgresql
           - cluster.${_param:stack_name}.stacklight.pushkin
@@ -65,12 +67,15 @@ parameters:
           params:
             single_address: ${_param:mon_address}
             salt_master_host: ${_param:salt_master_host}
+            cluster_name: ${_param:stack_name}
+            cluster_domain: ${_param:stack_name}.${_param:domain}
         cid_node:
           name: ${_param:stack_name}cid
           domain: ${_param:domain}
           environment: ${_param:salt_master_base_environment}
           classes:
           - cluster.${_param:stack_name}.infra.salt-minion
+          - cluster.${_param:stack_name}.infra.telegraf
           - cluster.${_param:stack_name}.drivetrain.repo
           - cluster.${_param:stack_name}.drivetrain.glusterfs_single
           - cluster.${_param:stack_name}.drivetrain.glusterfs
@@ -85,6 +90,7 @@ parameters:
           params:
             single_address: ${_param:cid_address}
             salt_master_host: ${_param:salt_master_host}
+            cluster_domain: ${_param:stack_name}.${_param:domain}
             cluster_name: ${_param:stack_name}
             salt_api_password: ${_param:salt_api_password}
   linux:

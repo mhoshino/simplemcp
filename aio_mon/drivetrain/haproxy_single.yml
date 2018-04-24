@@ -6,6 +6,7 @@ classes:
 - system.haproxy.proxy.listen.cicd.jenkins
 - system.haproxy.proxy.listen.openldap
 - system.haproxy.proxy.listen.phpldapadmin
+- system.haproxy.proxy.listen.mysql
 parameters:
   _param:
     haproxy_bind_address: ${_param:cluster_vip_address}
@@ -17,4 +18,6 @@ parameters:
         openldap_ssl:
           servers: ~
         phpldapadmin:
+          servers: ~
+        mysql:
           servers: ~

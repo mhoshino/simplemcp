@@ -1,10 +1,12 @@
 classes:
 - system.docker.swarm.stack.ldap
+- system.openldap.client
+- system.openldap.client.people.admin
 parameters:
   _param:
     openldap_organisation: "${_param:cluster_name}"
-    openldap_dn: "dc=${_param:cluster_name},dc=local"
-    openldap_domain: "${_param:cluster_name}.local"
+    openldap_dn: "dc=local"
+    openldap_domain: "local"
     openldap_admin_password: ${_param:common_password}
     openldap_config_password: ${_param:common_password}
     openldap_readonly_password: ${_param:common_password}

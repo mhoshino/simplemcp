@@ -1,6 +1,13 @@
+#classes:
+#- system.salt.minion.cert.proxy.cicd
 parameters:
   _param:
     admin_email: admin@admin.com
     control_vip_address: ${_param:single_address}
     cluster_node01_name: ${linux:system:name}
     common_password: password
+  linux:
+    system:
+      package:
+        ca-certificates-java:
+          version: latest

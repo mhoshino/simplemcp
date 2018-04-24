@@ -19,3 +19,9 @@ parameters:
             name: ${linux:system:name}
             port: 18089
             params: check
+        mysql:
+          servers:
+          - host: ${_param:single_address}
+            name: ${linux:system:name}
+            port: 13306
+            params: check

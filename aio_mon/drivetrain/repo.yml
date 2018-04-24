@@ -3,6 +3,7 @@ application:
 classes:
 - system.linux.system.repo.glusterfs
 - system.linux.system.repo.docker
+- system.linux.system.repo.mcp.extra
 parameters:
   _param:
     linux_system_codename: xenial

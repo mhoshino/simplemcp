@@ -1,11 +1,14 @@
 classes:
 - system.docker.swarm.stack.gerrit
+- system.gerrit.client
+- system.gerrit.client.project.ci
 parameters:
   _param:
     mysql_admin_password: ${_param:common_password}
     mysql_gerrit_password: ${_param:common_password}
+    gerrit_http_listen_url: proxy-https://*:8080/
     gerrit_admin_email: ${_param:admin_email}
-    gerrit_public_host: https://${_param:haproxy_gerrit_bind_host}:${_param:haproxy_gerrit_bind_port}
+    gerrit_public_host: http://${_param:haproxy_gerrit_bind_host}:${_param:haproxy_gerrit_bind_port}
     gerrit_admin_public_key: ${_param:jenkins_admin_public_key}
     gerrit_admin_private_key: ${_param:jenkins_admin_private_key}
     gerrit_auth_type: LDAP
