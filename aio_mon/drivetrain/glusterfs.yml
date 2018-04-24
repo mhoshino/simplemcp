@@ -13,6 +13,8 @@ parameters:
         jenkins:
           path: /srv/volume/jenkins
           server: ${_param:single_address}
+          user: 1000
+          group: 1000
         gerrit:
           path: /srv/volume/gerrit
           server: ${_param:single_address}
