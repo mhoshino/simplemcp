@@ -1,0 +1,7 @@
+classes:
+- system.docker.swarm.stack.kqueen
+parameters:
+  _param:
+    docker_image_kqueen_api: "kqueen/api:v0.19"
+    docker_image_kqueen_ui: "kqueen/ui:v0.9"
+

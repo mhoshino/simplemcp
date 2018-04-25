@@ -24,3 +24,6 @@ parameters:
         kqueen:
           path: /srv/volumes/kqueen
           server: ${_param:single_address}
+        etcd:
+          path: /srv/volumes/etcd
+          server: ${_param:single_address}

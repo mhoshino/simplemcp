@@ -37,3 +37,9 @@ parameters:
             name: ${linux:system:name}
             port: 15080
             params: check
+        etcd:
+          servers:
+          - host: ${_param:single_address}
+            name: ${linux:system:name}
+            port: 14001
+            params: check port 14001

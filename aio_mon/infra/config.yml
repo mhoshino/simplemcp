@@ -69,6 +69,7 @@ parameters:
             salt_master_host: ${_param:salt_master_ip}
             cluster_name: ${_param:stack_name}
             cluster_domain: ${_param:stack_name}.${_param:domain}
+            cid_host: ${_param:cid_address}
         cid_node:
           name: ${_param:stack_name}cid
           domain: ${_param:domain}

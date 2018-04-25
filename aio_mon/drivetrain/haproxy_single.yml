@@ -5,6 +5,7 @@ classes:
 - system.haproxy.proxy.listen.cicd.gerrit
 - system.haproxy.proxy.listen.cicd.jenkins
 - system.haproxy.proxy.listen.cicd.kqueen
+- system.haproxy.proxy.listen.cicd.etcd
 - system.haproxy.proxy.listen.openldap
 - system.haproxy.proxy.listen.phpldapadmin
 - system.haproxy.proxy.listen.mysql
@@ -25,4 +26,6 @@ parameters:
         kqueen_api:
           servers: ~
         kqueen_ui:
+          servers: ~
+        etcd:
           servers: ~

@@ -1,8 +1,20 @@
 classes:
 - system.docker.swarm.stack.devops_portal
 - service.devops_portal.config
-- system.devops_portal.service.elasticsearch
+#- system.devops_portal.service.elasticsearch
+- system.devops_portal.service.gerrit
+- system.devops_portal.service.jenkins
 - system.devops_portal.service.janitor_monkey
 - system.devops_portal.service.pushkin
 - system.devops_portal.service.rundeck
 - system.devops_portal.service.security_monkey
+parameters:
+  _param:
+    haproxy_jenkins_bind_host: ${_param:cid_host}
+    haproxy_jenkins_bind_port: 8081
+    haproxy_jenkins_ssl:
+      enabled: false
+    haproxy_gerrit_bind_host: ${_param:cid_host}
+    haproxy_gerrit_bind_port: 8081
+    haproxy_gerrit_ssl:
+      enabled: false

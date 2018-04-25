@@ -11,26 +11,23 @@ parameters:
       enabled: true
       volumes:
         devops_portal:
-          path: /srv/volume/devops_portal
-          server: ${_param:single_address}
-        influxdb:
-          path: /srv/volume/influxdb
+          path: /srv/volumes/devops_portal
           server: ${_param:single_address}
         elasticsearch:
-          path: /srv/volume/elasticsearch
+          path: /srv/volumes/elasticsearch
           server: ${_param:single_address}
         postgresql:
-          path: /srv/volume/postgresql
+          path: /srv/volumes/postgresql
           server: ${_param:single_address}
         pushkin:
-          path: /srv/volume/pushkin
+          path: /srv/volumes/pushkin
           server: ${_param:single_address}
         rundeck:
-          path: /srv/volume/rundeck
+          path: /srv/volumes/rundeck
           server: ${_param:single_address}
         security_monkey:
-          path: /srv/volume/security_monkey
+          path: /srv/volumes/security_monkey
           server: ${_param:single_address}
         mongodb:
-          path: /srv/volume/security_mongodb
+          path: /srv/volumes/security_mongodb
           server: ${_param:single_address}

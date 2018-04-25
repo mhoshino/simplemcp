@@ -23,3 +23,7 @@ parameters:
           storage: /srv/glusterfs/kqueen
           bricks:
           - ${_param:single_address}:/srv/glusterfs/kqueen
+        etcd:
+          storage: /srv/glusterfs/etcd
+          bricks:
+          - ${_param:single_address}:/srv/glusterfs/etcd
