@@ -87,6 +87,7 @@ parameters:
           - cluster.${_param:stack_name}.drivetrain.gerrit
           - cluster.${_param:stack_name}.drivetrain.jenkins_single
           - cluster.${_param:stack_name}.drivetrain.jenkins
+          - cluster.${_param:stack_name}.drivetrain.kqueen
           - cluster.${_param:stack_name}.drivetrain.override
           params:
             single_address: ${_param:cid_address}
