@@ -1,7 +1,15 @@
 classes:
+- system.docker.swarm.network.kqueen_backend
 - system.docker.swarm.stack.kqueen
 parameters:
   _param:
     docker_image_kqueen_api: "kqueen/api:v0.19"
     docker_image_kqueen_ui: "kqueen/ui:v0.9"
 
+    kqueen_ui_debug: "True"
+    kqueen_ui_enable_public_registration: "False"
+    kqueen_ui_ldap_auth_notify: "False"
+    kqueen_ui_local_auth_notify: "True"
+    kqueen_api_debug: "True"
+    kqueen_credentials:
+      kqueen_api_bootstrap_admin: "True"
