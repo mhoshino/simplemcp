@@ -1,0 +1,9 @@
+classes:
+- system.elasticsearch.server.single
+- system.elasticsearch.client
+- system.elasticsearch.client.index.pushkin
+- system.elasticsearch.client.index.cis_openstack
+parameters:
+  _param:
+    cluster_node01_address: ${_param:single_address}
+    elasticsearch_binary_bind_port: 9200

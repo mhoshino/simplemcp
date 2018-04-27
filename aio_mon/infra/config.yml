@@ -30,6 +30,7 @@ parameters:
           - cluster.${_param:stack_name}.infra.salt-minion
           - cluster.${_param:stack_name}.infra.telegraf
           - cluster.${_param:stack_name}.infra.prometheus_client
+          - cluster.${_param:stack_name}.infra.grafana_collector
           - cluster.${_param:stack_name}.infra.fluentd
           - cluster.${_param:stack_name}.openstackaio.repo
           - cluster.${_param:stack_name}.openstackaio.mysql
@@ -54,6 +55,7 @@ parameters:
           - cluster.${_param:stack_name}.infra.salt-minion
           - cluster.${_param:stack_name}.infra.telegraf
           - cluster.${_param:stack_name}.infra.prometheus_client
+          - cluster.${_param:stack_name}.infra.grafana_collector
           - cluster.${_param:stack_name}.infra.fluentd
           - cluster.${_param:stack_name}.stacklight.repo
           - cluster.${_param:stack_name}.stacklight.glusterfs_single
@@ -67,6 +69,7 @@ parameters:
           - cluster.${_param:stack_name}.stacklight.janitor_monkey
           - cluster.${_param:stack_name}.stacklight.postgresql
           - cluster.${_param:stack_name}.stacklight.pushkin
+          - cluster.${_param:stack_name}.stacklight.rundeck_single
           - cluster.${_param:stack_name}.stacklight.rundeck
           - cluster.${_param:stack_name}.stacklight.security_monkey
           - cluster.${_param:stack_name}.stacklight.devops_portal
@@ -75,9 +78,10 @@ parameters:
             single_address: ${_param:mon_address}
             salt_master_host: ${_param:salt_master_ip}
             cluster_name: ${_param:stack_name}
-            cluster_domain: ${_param:stack_name}.${_param:domain}
+            cluster_domain: ${_param:domain}
             cid_host: ${_param:cid_address}
             stacklight_log_address: ${_param:log_address}
+            openstack_proxy_address: ${_param:aio_address}
         cid_node:
           name: ${_param:stack_name}cid
           domain: ${_param:domain}
@@ -86,6 +90,7 @@ parameters:
           - cluster.${_param:stack_name}.infra.salt-minion
           - cluster.${_param:stack_name}.infra.telegraf
           - cluster.${_param:stack_name}.infra.prometheus_client
+          - cluster.${_param:stack_name}.infra.grafana_collector
           - cluster.${_param:stack_name}.infra.fluentd
           - cluster.${_param:stack_name}.drivetrain.repo
           - cluster.${_param:stack_name}.drivetrain.glusterfs_single
@@ -102,7 +107,28 @@ parameters:
           params:
             single_address: ${_param:cid_address}
             salt_master_host: ${_param:salt_master_ip}
-            cluster_domain: ${_param:stack_name}.${_param:domain}
+            cluster_domain: ${_param:domain}
+            cluster_name: ${_param:stack_name}
+            salt_api_password: ${_param:salt_api_password}
+            stacklight_log_address: ${_param:log_address}
+        log_node:
+          name: ${_param:stack_name}log
+          domain: ${_param:domain}
+          environment: ${_param:salt_master_base_environment}
+          classes:
+          - cluster.${_param:stack_name}.infra.salt-minion
+          - cluster.${_param:stack_name}.infra.telegraf
+          - cluster.${_param:stack_name}.infra.prometheus_client
+          - cluster.${_param:stack_name}.infra.grafana_collector
+          - cluster.${_param:stack_name}.infra.fluentd
+          - cluster.${_param:stack_name}.lma.repo
+          - cluster.${_param:stack_name}.lma.elasticsearch
+          - cluster.${_param:stack_name}.lma.kibana
+          - cluster.${_param:stack_name}.lma.override
+          params:
+            single_address: ${_param:log_address}
+            salt_master_host: ${_param:salt_master_ip}
+            cluster_domain: ${_param:domain}
             cluster_name: ${_param:stack_name}
             salt_api_password: ${_param:salt_api_password}
             stacklight_log_address: ${_param:log_address}

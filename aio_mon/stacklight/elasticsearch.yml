@@ -1,6 +1,0 @@
-classes:
-- system.docker.swarm.stack.elasticsearch
-- system.elasticsearch.client
-- system.elasticsearch.client.index.pushkin
-- system.elasticsearch.client.index.cis_openstack
-

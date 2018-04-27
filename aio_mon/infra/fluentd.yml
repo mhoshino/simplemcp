@@ -1,5 +1,6 @@
 classes:
 - system.linux.system.repo.fluentd
+- system.linux.system.repo.mcp.openstack
 - system.fluentd
 - system.fluentd.label.default_metric
 - system.fluentd.label.default_metric.prometheus
@@ -8,4 +9,5 @@ classes:
 parameters:
   _param:
     fluentd_elasticsearch_host: ${_param:stacklight_log_address}
+    openstack_version: pike
 

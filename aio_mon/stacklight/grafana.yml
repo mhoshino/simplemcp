@@ -1,6 +1,14 @@
 classes:
 - system.docker.swarm.stack.dashboard
+- system.grafana.client
+- system.grafana.client.datasource.prometheus
 parameters:
   _param:
     docker_image_grafana: grafana/grafana:4.5.2
     grafana_admin_password: ${_param:common_password}
+    grafana_user: admin
+    grafana_password: ${_param:common_password} 
+    grafana_address: ${_param:single_address}
+    grafana_port: 15013
+    grafana_prometheus_address: ${_param:single_address}
+    grafana_prometheus_port: 15010

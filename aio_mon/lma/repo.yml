@@ -1,0 +1,11 @@
+application:
+- linux.system.repo
+classes:
+- system.linux.system.repo.mcp.extra
+- system.linux.system.repo.mcp.apt_mirantis.elastic
+parameters:
+  _param:
+    linux_system_codename: xenial
+  linux:
+    system:
+      enabled: true

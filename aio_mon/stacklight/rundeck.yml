@@ -1,37 +1,11 @@
-classes:
-- system.docker.swarm.stack.rundeck
-- system.rundeck.server.docker
-- system.rundeck.client
-- system.rundeck.client.runbook
 parameters:
-  _param:
-     rundeck_runbook_public_key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQChVIblPuYfRlGOcCZC1IR9zB35XmzmaP22xtYT/DtwYqIjNdKW9bKYfyZM+NMyVpwN0MYdQCd5OOc2+ACnbeKySd8g0tG76YqXdF7Bsxf9pJUTLHSeOeHBAVIMPej1MMJkCO/kCb6alb0ay3umr+hsKPnzukG6UWHUMLGuGqO4Au5rcB+p11AymwgnAr8cHpk0cNlxoJhnVp8/Z5aHmjXxb42m3g6lhAIqexbyU5tzYJQSZ0dj/W2k/7fMiBnF+n4W6Mucgrm56FX9U3qPUWh3eKkbroRCAtgFXWXhDDPJO++yafsgj8imUEWXElmQhkZhgChg15Rhv+C9ozzhrOGP
-     rundeck_runbook_private_key: |
-        -----BEGIN RSA PRIVATE KEY-----
-        MIIEowIBAAKCAQEAoVSG5T7mH0ZRjnAmQtSEfcwd+V5s5mj9tsbWE/w7cGKiIzXS
-        lvWymH8mTPjTMlacDdDGHUAneTjnNvgAp23isknfINLRu+mKl3RewbMX/aSVEyx0
-        njnhwQFSDD3o9TDCZAjv5Am+mpW9Gst7pq/obCj587pBulFh1DCxrhqjuALua3Af
-        qddQMpsIJwK/HB6ZNHDZcaCYZ1afP2eWh5o18W+Npt4OpYQCKnsW8lObc2CUEmdH
-        Y/1tpP+3zIgZxfp+FujLnIK5uehV/VN6j1Fod3ipG66EQgLYBV1l4QwzyTvvsmn7
-        II/IplBFlxJZkIZGYYAoYNeUYb/gvaM84azhjwIDAQABAoIBAEP4tQ0JPzOWEO6O
-        WdB2cYv+3/Ic0o0RVzQW+kNZVkG3jNCA8MUhp6mQiLaNb44Z5436lD3mtbrhOqly
-        O/RO2+B6N0RBDpS5hObi5Ll/l3AKU7TMWiYABRmoUMVPoEMN1BkJmujdIi1HQXF0
-        ohhMrQRFD2qc4ux5NVqNWY8dMjVoe3m9s/W2++8TpTnadPESHysFXWKtoJHP7pgJ
-        Q/J6COc4oQUhx94XZgEfmZdJjJ2BnOjxTqbYrr5bTy2mRJQKcToyYfpG9U1ixhiP
-        JM6QwAuh694I0AlU3dzE6UEU22bSoyYQO8tWKiuaRThvjCKiMi3mLyRzHxtvaBOr
-        W6XTZ6ECgYEAz6B41z7bAZZQCHp+eFcske82gU0kV6YyFZj8vr0uOFtW73uWxR94
-        RWa0QeGcgrXeewd9JyiiG5Nr8f4gAjcSoyjX0j/6nD4ZX9hQRvejkjXHLTo2nri2
-        f0sMWWBO7aFSjqLvTI7TvGfxDxvN17lPneF0FDIY5yFSboTaQnWVGlsCgYEAxurG
-        NAbA9IxZpQYBrFA1ofrUbhi9DEivWCQ2Sw3mFMpC0ZcPPfRFLoAnv4du7fPayJSz
-        /C759PTRK/erTpvIix3MedGjc3G4dJyZ51RH0/2pG3WUsVZfKAUEj2VG0ayChfQw
-        rfFcBRtb+pBJsZ+Z2poA6BBQWh6oFSVuiI8vM90CgYBNYjfnsYuaudU2c8EzRPpd
-        odSkuIW1DUJZfl2lEYlqg9CRDXUSHzqKU08Xxui4ZuR24kGpGKHiuT1gQiDX8oLF
-        wPE/cY0MMrDuYgb5jE6wrc6ActPssFeEdgoyPYztUFUeyGd8FzefXvYfdXNw1aZw
-        55iF9m4Fpwu8GVPntT9PRQKBgQC1ndQb2nLAlYif2K0cZBuj6j2czC+HkLGv+1gr
-        DOSe5NE/RfofqfCkdVRVVlWdIwIGE2eGAGouEn0M9NPPMQNYqXtxWkwvcoxkxDrs
-        8JGoZ7jIHoIFrIOzKWmxd1nCxQxjO8Jafr1y2DkRvD3c1IkIA4aCW6rRrZ3vuL6E
-        Jp+FbQKBgC7b8ZO951+rsFbgUa/iEZdH4SjrQrRF9qTfEU+I+o3rXqjeHLaFa/tV
-        ruKeD6jjZoRLW++EtVM/xL5L+w1pg5R/8Cp1ewyj+vYennzcKTBzN8fs0uv1Nzgx
-        2vO51TbdWAq+2CBgXRjixQcHxupyVM9uXJcbIHkwIx6zAhNc0bSz
-        -----END RSA PRIVATE KEY-----
-
+  rundeck:
+    client:
+      project:
+        cicd:
+          node: 
+            node01:
+              nodename: ${linux:system:name}.${linux:system:domain}
+              hostname: ${linux:system:name}
+              username: ${_param:rundeck_runbook_user}
+              tags: [cicd, docker]
