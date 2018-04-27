@@ -1,0 +1,48 @@
+classes:
+- system.backupninja.client.single
+- system.openssh.client.root
+parameters:
+  _param:
+    backupninja_backup_host: ${_param:backupninja_backup_ip}
+    root_private_key: |
+      -----BEGIN RSA PRIVATE KEY-----
+      MIIEpAIBAAKCAQEAvfvdKmeXtkfTLZI7427LoVsgKXYm1IjSmL4EYaz/mR7EV7jL
+      R5Bcp6g2V1ctaV6uDuaZVWvQlBUQvwMg7RN57Gd228oSUBd3uo/NQJPavgc7hstE
+      9aBQKqKi+LGNuOAaeXhEX7d3nhy8y71xuKR+whNt97R5J2t3Vdf5fSoB5Wr3TXEo
+      YQXWHDa0w83iMnVDj3Z0hg9jDdvpk8m/1qQyDYfSh2p037MMRY4bFoiZ9RJRoxJm
+      a2bCcW4JMi4Pyd1z5BUIDKQnU0AV40zJZLDfIhy/YyXvciWSDR/mAwv+y+Rwn5yE
+      MZZmSp2RwaFLIBtWV0rPZqYyQ3LMVBhb2XUm3QIDAQABAoIBAEiWgtpA2mZ66uTu
+      ipNLMeJkvtUYn5106YISl/n5727BoqMhqAmfzscALkMQu/kWg8qNsOhCWV867TsO
+      JvZuCpeYsIEpo/WWAdj2OKYD1//jI4tM/vwaVIb1vO7oaA3LElJ28SjhIIL41+nA
+      aEL0FrpwUgPioKe/F8lky55W/oJ4wgfGNnr/lukXmkgFPTDSh1N+JRz7RWgIoIj8
+      KSWXFWsu9MR0PhfqUJPfc18lP8pQVRTgzx6uIBnlpA75QNoHLORWTzkoJkyqdEpe
+      ve7x37j2N8oxchX45etBBQdcAUrBBLcLR77n/R0TbQ9eBLV0HhEMEiCItZIFU8nZ
+      Femb9MECgYEA/PWCY+6yPSwcdie2rvcbmAV6uZxIP0DRspZ4w9Av3GHUs3BY3V+j
+      mTI8zoW5ae9ajVJHa+CpmYYGR2iUF2pwS7aDG8eg7IXp76ln9jfX214v6uRAIT6s
+      imyfr0s4QzaFy02eNmbW+Qf48g3LuLbe/EfdNzFTCTfU5T4psB1tor8CgYEAwESL
+      0gLeIPI+hkLII3di6SV9hfayV0tXqc4TdQ4j57kRgbFk/ZzDoD3Y/rd9PumUxG0I
+      Hbdshzjh+In/OhkBc6IrKMyLKzaCeCEpm0FMBhu0twwih/M83/+h6HEmlBeN7OKY
+      u/CJfJW8PTMmAsD8rxFzc3AaLDUN5PezyPzJiWMCgYAAkUBonvlxX670qOQlAlLi
+      hWigD/Sth6SwxNuifM4OrX1/pYndfUBtsIooYG5pCWtnk76rREa9HGrZMCfc4ZU8
+      5jznDAyVWzuKGRQtnjRyvoRW/4oRSQW0DchR6VZH+FBWg2cOci6bQmRRjqxdTrOz
+      Vyns3MR16dUlan1HctlzGwKBgQC9JvKTkuSrbwcaGTtCwSJbEtoR4GkFvoao9Kdp
+      wpaKUyUo/bfIVeCTliUUOrqKGUyVjlqsuZaY1dpiJIkmxBEMjN9/DPRheAgVXTLM
+      ngnH/JvmdZbHPwKFsL29qwv0J9Ql16vBQdxQ6BK/9sEPdoNhTH7Tc9cb5Lodp5+F
+      PUSc1wKBgQDK7BtyXx8iaD/1YSmayIm5U9iNttxHYT4mqdyfcVceapEt9Br9MKw+
+      kdcEGfnBCeUsIH7fnO8T/Xc751QUyhrg60cNr3PbguQiZPKNP0k50lBIX39kuGr6
+      kbcOSyNskVd9VpHiok5JWGAF3tu3Q5k/bWr+Kf+2XjBR+px4v9OSGg==
+      -----END RSA PRIVATE KEY-----
+  backupninja:
+    client:
+      backup_times:
+        dummy: dummy
+  linux:
+    system:
+      user:
+        root:
+          enabled:
+              True
+          home:
+              /root
+          name:
+              root
