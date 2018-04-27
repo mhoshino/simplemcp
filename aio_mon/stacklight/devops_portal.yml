@@ -15,6 +15,6 @@ parameters:
     haproxy_jenkins_ssl:
       enabled: false
     haproxy_gerrit_bind_host: ${_param:cid_host}
-    haproxy_gerrit_bind_port: 8081
+    haproxy_gerrit_bind_port: 8080
     haproxy_gerrit_ssl:
       enabled: false

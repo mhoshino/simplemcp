@@ -28,6 +28,7 @@ parameters:
           classes:
           - cluster.${_param:stack_name}.infra.salt-minion
           - cluster.${_param:stack_name}.infra.telegraf
+          - cluster.${_param:stack_name}.infra.prometheus_client
           - cluster.${_param:stack_name}.openstackaio.repo
           - cluster.${_param:stack_name}.openstackaio.mysql
           - cluster.${_param:stack_name}.openstackaio.rabbitmq
@@ -49,6 +50,7 @@ parameters:
           classes:
           - cluster.${_param:stack_name}.infra.salt-minion
           - cluster.${_param:stack_name}.infra.telegraf
+          - cluster.${_param:stack_name}.infra.prometheus_client
           - cluster.${_param:stack_name}.stacklight.repo
           - cluster.${_param:stack_name}.stacklight.glusterfs_single
           - cluster.${_param:stack_name}.stacklight.glusterfs
@@ -77,6 +79,7 @@ parameters:
           classes:
           - cluster.${_param:stack_name}.infra.salt-minion
           - cluster.${_param:stack_name}.infra.telegraf
+          - cluster.${_param:stack_name}.infra.prometheus_client
           - cluster.${_param:stack_name}.drivetrain.repo
           - cluster.${_param:stack_name}.drivetrain.glusterfs_single
           - cluster.${_param:stack_name}.drivetrain.glusterfs
@@ -95,6 +98,17 @@ parameters:
             cluster_domain: ${_param:stack_name}.${_param:domain}
             cluster_name: ${_param:stack_name}
             salt_api_password: ${_param:salt_api_password}
+        #ninja_server:
+        #  name: mcpmhoshimcpmhoshininja
+        #  domain: local
+        #  environment: ${_param:salt_master_base_environment}
+        #  classes:
+        #  - system.salt.minion.master
+        #  - system.backupninja.server.single
+        #  parameters:
+        #    _param:
+        #      salt_master_host: ${_param:salt_master_ip}
+        #      backupninja_public_key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDSCvd+qV2VsUt5J0Qkz5TQHC25TJ/d0gFI8dulYizqCQVRXp7LV9IpxP06McGZ9jT3iXnUYHGqbwZg0xRmGaod5tPWj9XneyRFHtwMRi6ZQ9Su5b0ZAd3Umj9nnw5RAQKoDIYD2ETkt332woi6oa7mL6nvylYuiGLPe/jpDK7oKRtobQvOTfGCgZ3AJ+c0z8QCb+RX5vVIpVicZrWsZ1ja8SUEhr7j2Ea8ooiGdrG+z9GCIwIfhfwLy1uv5aVGonrM23NRIGmO4gDEbzrweN1oO+edcK4mwlHora010VwP0z3Yps7znXXS/+6DFsDw6D78m/6uskzYrbN9gCCWYCLz Generated-by-Nova
   linux:
     system:
       enabled: true
