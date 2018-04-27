@@ -1,0 +1,11 @@
+classes:
+- system.linux.system.repo.fluentd
+- system.fluentd
+- system.fluentd.label.default_metric
+- system.fluentd.label.default_metric.prometheus
+- system.fluentd.label.default_output.elasticsearch
+- system.fluentd.label.default_output.drop_event
+parameters:
+  _param:
+    fluentd_elasticsearch_host: ${_param:stacklight_log_address}
+
