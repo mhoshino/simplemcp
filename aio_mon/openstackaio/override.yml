@@ -7,8 +7,8 @@ parameters:
     openstack_database_address: ${_param:single_address}
     openstack_version: pike
     openstack_region: RegionOne
-    openstack_fluentd_handler_enabled: false
-    openstack_ossyslog_handler_enabled: false
+    openstack_fluentd_handler_enabled: true
+    openstack_ossyslog_handler_enabled: true
   linux:
     system:
       enabled: true

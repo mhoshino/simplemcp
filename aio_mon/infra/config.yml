@@ -16,6 +16,7 @@ parameters:
     aio_address: 192.168.0.11
     mon_address: 192.168.0.12
     cid_address: 192.168.0.13
+    log_address: 192.168.0.14
   reclass:
     storage:
       data_source:
@@ -29,6 +30,7 @@ parameters:
           - cluster.${_param:stack_name}.infra.salt-minion
           - cluster.${_param:stack_name}.infra.telegraf
           - cluster.${_param:stack_name}.infra.prometheus_client
+          - cluster.${_param:stack_name}.infra.fluentd
           - cluster.${_param:stack_name}.openstackaio.repo
           - cluster.${_param:stack_name}.openstackaio.mysql
           - cluster.${_param:stack_name}.openstackaio.rabbitmq
@@ -43,6 +45,7 @@ parameters:
             salt_master_host: ${_param:salt_master_ip}
             cluster_name: ${_param:stack_name}
             cluster_domain: ${_param:stack_name}.${_param:domain}
+            stacklight_log_address: ${_param:log_address}
         mon_node:
           name: ${_param:stack_name}mon
           domain: ${_param:domain}
@@ -51,6 +54,7 @@ parameters:
           - cluster.${_param:stack_name}.infra.salt-minion
           - cluster.${_param:stack_name}.infra.telegraf
           - cluster.${_param:stack_name}.infra.prometheus_client
+          - cluster.${_param:stack_name}.infra.fluentd
           - cluster.${_param:stack_name}.stacklight.repo
           - cluster.${_param:stack_name}.stacklight.glusterfs_single
           - cluster.${_param:stack_name}.stacklight.glusterfs
@@ -58,6 +62,7 @@ parameters:
           - cluster.${_param:stack_name}.stacklight.haproxy_single
           - cluster.${_param:stack_name}.stacklight.haproxy
           - cluster.${_param:stack_name}.stacklight.grafana
+          - cluster.${_param:stack_name}.stacklight.monitoring_single
           - cluster.${_param:stack_name}.stacklight.monitoring
           - cluster.${_param:stack_name}.stacklight.janitor_monkey
           - cluster.${_param:stack_name}.stacklight.postgresql
@@ -72,6 +77,7 @@ parameters:
             cluster_name: ${_param:stack_name}
             cluster_domain: ${_param:stack_name}.${_param:domain}
             cid_host: ${_param:cid_address}
+            stacklight_log_address: ${_param:log_address}
         cid_node:
           name: ${_param:stack_name}cid
           domain: ${_param:domain}
@@ -80,6 +86,7 @@ parameters:
           - cluster.${_param:stack_name}.infra.salt-minion
           - cluster.${_param:stack_name}.infra.telegraf
           - cluster.${_param:stack_name}.infra.prometheus_client
+          - cluster.${_param:stack_name}.infra.fluentd
           - cluster.${_param:stack_name}.drivetrain.repo
           - cluster.${_param:stack_name}.drivetrain.glusterfs_single
           - cluster.${_param:stack_name}.drivetrain.glusterfs
@@ -98,6 +105,7 @@ parameters:
             cluster_domain: ${_param:stack_name}.${_param:domain}
             cluster_name: ${_param:stack_name}
             salt_api_password: ${_param:salt_api_password}
+            stacklight_log_address: ${_param:log_address}
         #ninja_server:
         #  name: mcpmhoshimcpmhoshininja
         #  domain: local
