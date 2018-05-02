@@ -14,7 +14,7 @@ HOSTNAME_IP=`hostname -I | awk '{print $1}'`
 
 # Add domain to etc_hosts if not configured 
 hostname -f | grep -q "\." ||  {
-  sed -i '/$HOSTNAME_IP/d' /etc/hosts
+  sed -i "/^$HOSTNAME_IP  */d" /etc/hosts
   echo "$HOSTNAME_IP $HOSTNAME $HOSTNAME.local" >> /etc/hosts
 }
 
@@ -29,8 +29,8 @@ wget -O - https://repo.saltstack.com/apt/ubuntu/$UBUNTUVERSION/amd64/$SALTVERSIO
 cat > /etc/apt/sources.list.d/saltstack.list << EOF
 deb http://repo.saltstack.com/apt/ubuntu/$UBUNTUVERSION/amd64/$SALTVERSION $UBUNTUCODE main
 EOF
-  apt-get update  
-}
+apt-get update  
+
 
 # Install salt_minion
 apt-get install salt-common salt-minion -y
