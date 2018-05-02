@@ -122,3 +122,6 @@ parameters:
     master:
       worker_threads: 5
 EOF
+
+sleep 30
+systemctl restart salt-minion
