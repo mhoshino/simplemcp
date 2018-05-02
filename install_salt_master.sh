@@ -36,7 +36,7 @@ apt-get update
 apt-get install salt-common salt-minion -y
 
 cat > /etc/salt/minion.d/minion.conf << EOF
-master: HOSTNAME_IP
+master: $HOSTNAME_IP
 EOF
 
 # Install and config(temporary) salt master
