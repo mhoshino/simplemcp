@@ -43,9 +43,9 @@ salt-call state.apply salt
 salt-call saltutil.sync_all
 salt-call state.apply glusterfs
 salt-call state.apply haproxy
-salt-call state.sls devops_portal.config
-salt-call state.sls rundeck.server
-salt-call state.apply elasticsearch
-salt-call state.apply kibana
-salt-call state.apply 
+salt-call state.apply devops_portal.config
+salt-call state.apply rundeck.server
+salt-call state.apply prometheus
+salt-call state.apply docker
+salt-call state.apply postgresql.client
 ```
