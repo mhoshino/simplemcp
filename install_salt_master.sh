@@ -103,7 +103,6 @@ ln -s /usr/share/salt-formulas/env /src/salt/env/prd
 # Create salt config for master node
 cat > /srv/salt/reclass/nodes/$HOSTNAME.local.yml <<EOF
 classes:
-- cluster.reclass_test.infra.config
 parameters:
   _param:
     linux_system_codename: $UBUNTUCODE
