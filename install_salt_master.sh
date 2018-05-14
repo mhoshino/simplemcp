@@ -11,10 +11,8 @@ HOSTNAME=`hostname`
 HOSTNAME_IP=`hostname -I | awk '{print $1}'`
 
 # Add domain to etc_hosts if not configured 
-hostname -f | grep -q "\." ||  {
-  sed -i "/^$HOSTNAME_IP  */d" /etc/hosts
-  echo "$HOSTNAME_IP $HOSTNAME $HOSTNAME.local" >> /etc/hosts
-}
+sed -i "/^$HOSTNAME_IP  */d" /etc/hosts
+echo "$HOSTNAME_IP $HOSTNAME $HOSTNAME.local" >> /etc/hosts
 
 # Install software
 apt-get update
@@ -34,6 +32,7 @@ apt-get update
 apt-get install salt-common salt-minion -y
 
 cat > /etc/salt/minion.d/minion.conf << EOF
+id: $HOSTNAME.local
 master: $HOSTNAME_IP
 EOF
 
