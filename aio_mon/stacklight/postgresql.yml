@@ -2,9 +2,9 @@ classes:
 - system.docker.swarm.stack.postgresql
 - system.postgresql.client.pushkin
 - system.postgresql.client.rundeck
-- system.postgresql.client.security_monkey
-- system.postgresql.client.alertmanager
-- system.postgresql.client.janitor_monkey
+- system.postgresql.client.pushkin.security_monkey
+- system.postgresql.client.pushkin.alertmanager
+- system.postgresql.client.pushkin.janitor_monkey
 parameters:
   _param:
     control_vip_address: ${_param:single_address}

@@ -1,6 +1,6 @@
 parameters:
-  prometheus:
-    relay:
-      backends:
-      - host: ${_param:single_address}
-        port: ${_param:prometheus_server_bind_port}
+#  prometheus:
+#    relay:
+#      backends:
+#      - host: ${_param:single_address}
+#        port: ${_param:prometheus_server_bind_port}

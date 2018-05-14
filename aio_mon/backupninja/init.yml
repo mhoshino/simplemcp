@@ -35,7 +35,8 @@ parameters:
   backupninja:
     client:
       backup_times:
-        dummy: dummy
+        hour: 00
+        minute: 30
   linux:
     system:
       user:

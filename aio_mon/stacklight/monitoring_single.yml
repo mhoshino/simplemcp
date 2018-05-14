@@ -6,13 +6,10 @@ classes:
 - system.prometheus.server.target.dns
 - system.prometheus.server.alertmanager.dns
 - system.prometheus.pushgateway.container
+- system.prometheus.server
 - system.prometheus.server.container
 - system.prometheus.alertmanager.container
 - system.prometheus.remote_storage_adapter.container
-- system.prometheus.relay
-- system.prometheus.server.standalone
-- system.prometheus.server.target.federation
-- system.prometheus.server.target.federation.all_metrics
 parameters:
   _param:
     docker_image_alertmanager: docker-prod-local.artifactory.mirantis.com/openstack-docker/alertmanager:latest
@@ -29,10 +26,8 @@ parameters:
     prometheus_influxdb_db: prometheus
     prometheus_influxdb_username: lma
     prometheus_influxdb_password: ${_param:influxdb_stacklight_password}
+    prometheus_server_bind_port: 9090
 
-  prometheus:
-    relay:
-      backends: ~
   docker:
     client:
       stack:

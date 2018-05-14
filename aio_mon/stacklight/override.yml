@@ -5,5 +5,5 @@ parameters:
     influxdb_admin_password: ${_param:common_password}
     telegraf_remote_agent_influxdb_address: ${_param:single_address}
     elasticsearch_cluster_name: test
-    elasticsearch_bind_host: 192.168.0.14
+    elasticsearch_bind_host: ${_param:stacklight_log_address}
     elasticsearch_binary_bind_port: 9200
