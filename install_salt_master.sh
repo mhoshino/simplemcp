@@ -104,12 +104,11 @@ ln -s /usr/share/salt-formulas/env /src/salt/env/prd
 # Create salt config for master node
 cat > /srv/salt/reclass/nodes/$HOSTNAME.local.yml <<EOF
 classes:
-- cluster.$CUSTERNAME.infra.config
+- cluster.reclass_test.infra.config
 parameters:
   _param:
     linux_system_codename: $UBUNTUCODE
     reclass_data_revision: master
-    stack_name: stackname
     salt_master_host: $HOSTNAME.local
     domain: local
   linux:
@@ -119,6 +118,10 @@ parameters:
   salt:
     master:
       worker_threads: 5
+  reclass:
+    storage:
+      data_source:
+        engine: local
 EOF
 
 sleep 30
