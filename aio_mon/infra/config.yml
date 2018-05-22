@@ -1,10 +1,12 @@
 classes:
+- system.linux.system.prompt.opscare
 - system.salt.master.pkg
 - system.salt.master.api
 - system.openssh.server.single
 - system.reclass.storage.salt
 parameters:
   _param:
+    cluster_domain: mcpmhoshi.local
     linux_system_codename: xenial
     reclass_data_repository: 
     reclass_data_revision: master
