@@ -3,9 +3,11 @@ set -x
 PARAM1=$1
 PARAM2=$2
 PARAM3=$3
-UBUNTUVERSION=${PARAM1:-16.04}
-UBUNTUCODE=${PARAM2:-xenial}
-SALTVERSION=${PARAM3:-2016.3}
+PARAM4=$4
+CLUSTERNAME=$1
+UBUNTUVERSION=${PARAM2:-16.04}
+UBUNTUCODE=${PARAM3:-xenial}
+SALTVERSION=${PARAM4:-2016.3}
 
 HOSTNAME=`hostname`
 HOSTNAME_IP=`hostname -I | awk '{print $1}'`
@@ -103,6 +105,7 @@ ln -s /usr/share/salt-formulas/env /src/salt/env/prd
 # Create salt config for master node
 cat > /srv/salt/reclass/nodes/$HOSTNAME.local.yml <<EOF
 classes:
+- cluster.$CLUSTERNAME.infra.config
 parameters:
   _param:
     linux_system_codename: $UBUNTUCODE
