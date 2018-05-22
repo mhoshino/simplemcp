@@ -11,10 +11,8 @@ HOSTNAME=`hostname`
 HOSTNAME_IP=`hostname -I | awk '{print $1}'`
 
 # Add domain to etc_hosts if not configured 
-hostname -f | grep -q "\." ||  {
-  sed -i "/^$HOSTNAME_IP  */d" /etc/hosts
-  echo "$HOSTNAME_IP $HOSTNAME $HOSTNAME.local" >> /etc/hosts
-}
+sed -i "/^$HOSTNAME_IP  */d" /etc/hosts
+echo "$HOSTNAME_IP $HOSTNAME $HOSTNAME.local" >> /etc/hosts
 
 # Install software
 apt-get update
@@ -34,6 +32,7 @@ apt-get update
 apt-get install salt-common salt-minion -y
 
 cat > /etc/salt/minion.d/minion.conf << EOF
+id: $HOSTNAME.local
 master: $HOSTNAME_IP
 EOF
 
@@ -104,12 +103,10 @@ ln -s /usr/share/salt-formulas/env /src/salt/env/prd
 # Create salt config for master node
 cat > /srv/salt/reclass/nodes/$HOSTNAME.local.yml <<EOF
 classes:
-- cluster.$CUSTERNAME.infra.config
 parameters:
   _param:
     linux_system_codename: $UBUNTUCODE
     reclass_data_revision: master
-    stack_name: stackname
     salt_master_host: $HOSTNAME.local
     domain: local
   linux:
@@ -119,6 +116,10 @@ parameters:
   salt:
     master:
       worker_threads: 5
+  reclass:
+    storage:
+      data_source:
+        engine: local
 EOF
 
 sleep 30
