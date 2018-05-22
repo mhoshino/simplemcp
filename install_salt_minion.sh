@@ -38,3 +38,6 @@ cat > /etc/salt/minion.d/minion.conf << EOF
 id: $HOSTNAME.local
 master: $MASTER_IP
 EOF
+
+sleep 30
+systemctl restart salt-minion
