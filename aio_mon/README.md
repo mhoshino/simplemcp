@@ -1,7 +1,5 @@
 # Configure salt master
 ```
-git clone https://github.com/mhoshino/simplemcp
-ln -s ~/simplemcp/aio_mon/ /srv/salt/reclass/classes/cluster/mcpmhoshi
 salt-call state.apply
 ```
 # Configure AIO openstack node
