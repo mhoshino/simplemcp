@@ -46,5 +46,7 @@ salt-call state.apply rundeck.server
 salt-call state.apply prometheus
 salt-call state.apply docker
 salt-call state.apply postgresql.client
+salt-call state.apply prometheus
 salt-call state.apply grafana
+salt-call state.apply rundeck.client
 ```
