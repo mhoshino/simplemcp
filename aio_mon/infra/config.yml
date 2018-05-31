@@ -15,10 +15,9 @@ parameters:
     salt_api_password: vyaPRQXnMsLCKCSlsTind9td59bCB8iR
     salt_master_ip: 172.13.0.10
     aio_address:    172.13.0.11
-    oc_address:     172.13.0.12
-    mon_address:    172.13.0.13
-    cid_address:    172.13.0.14
-    log_address:    172.13.0.15
+    mon_address:    172.13.0.12
+    cid_address:    172.13.0.13
+    log_address:    172.13.0.14
   reclass:
     storage:
       data_source:
