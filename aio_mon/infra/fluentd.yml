@@ -9,5 +9,6 @@ classes:
 parameters:
   _param:
     fluentd_elasticsearch_host: ${_param:stacklight_log_address}
+    elasticsearch_port: 9200
     openstack_version: pike
 
