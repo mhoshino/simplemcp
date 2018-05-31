@@ -13,12 +13,12 @@ parameters:
     salt_master_base_environment: prd
     salt_api_password_hash: "$6$sDHRYFYZ$cFRDr/jshAF/oT9uMAfV7vPTANQkna7ff83SoiD4XQaXRz1v2EYpr8pXVa81ZrBGB6XnpEhK5kwbPQHBekm3o/"
     salt_api_password: vyaPRQXnMsLCKCSlsTind9td59bCB8iR
-    salt_master_ip: 192.168.0.10
-    aio_address: 192.168.0.11
-    oc_address:  192.168.0.12
-    mon_address: 192.168.0.13
-    cid_address: 192.168.0.14
-    log_address: 192.168.0.15
+    salt_master_ip: 172.13.0.10
+    aio_address:    172.13.0.11
+    oc_address:     172.13.0.12
+    mon_address:    172.13.0.13
+    cid_address:    172.13.0.14
+    log_address:    172.13.0.15
   reclass:
     storage:
       data_source:
@@ -50,7 +50,7 @@ parameters:
             cluster_name: ${_param:cluster_name}
             cluster_domain: ${_param:cluster_name}.${_param:domain}
             stacklight_log_address: ${_param:log_address}
-            backupninja_backup_ip: 192.168.0.12
+            backupninja_backup_ip: 172.13.0.12
         mon_node:
           name: ${_param:cluster_name}mon
           domain: ${_param:domain}
