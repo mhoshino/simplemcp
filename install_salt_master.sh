@@ -111,6 +111,7 @@ parameters:
     linux_system_codename: $UBUNTUCODE
     reclass_data_revision: master
     salt_master_host: $HOSTNAME.local
+    cluster_name: $CLUSTERNAME
     domain: local
   linux:
     system:
