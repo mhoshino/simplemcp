@@ -4,10 +4,12 @@ PARAM1=$1
 PARAM2=$2
 PARAM3=$3
 PARAM4=$4
+PARAM5=$5
 CLUSTERNAME=$1
 UBUNTUVERSION=${PARAM2:-16.04}
 UBUNTUCODE=${PARAM3:-xenial}
 SALTVERSION=${PARAM4:-2016.3}
+SYSTEMCLASSVERSION=${PARAM5:-2018.4.0}
 
 HOSTNAME=`hostname`
 HOSTNAME_IP=`hostname -I | awk '{print $1}'`
@@ -94,6 +96,8 @@ done
 
 # Create system level reclass
 git clone https://github.com/Mirantis/reclass-system-salt-model.git /srv/salt/reclass/classes/system
+cd /srv/salt/reclass/classes/system
+git checkout tags/$SYSTEMCLASSVERSION
 
 # Create cluster level reclass
 mkdir -p /srv/salt/reclass/classes/cluster
