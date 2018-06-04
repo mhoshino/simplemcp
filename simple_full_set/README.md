@@ -1,6 +1,15 @@
+# Install infra
+```
+git clone https://github.com/mirantisjp/simplemcp
+source <keystonerc file>
+heat stack-create -f simplemcp/heat_templates/simple_full_set.yaml <stack name>
+```
 # Configure salt master
 ```
-salt-call state.apply
+ssh <salt node>
+git clone https://github.com/mirantisjp/simplemcp
+ln -sf ~/simplemcp/simple_full_set/ /srv/salt/reclass/classes/cluster/<stack name>
+salt-call -l debug state.apply
 ```
 # Configure AIO openstack node
 ```
