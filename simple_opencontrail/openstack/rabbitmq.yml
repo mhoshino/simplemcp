@@ -1,0 +1,7 @@
+classes:
+- system.rabbitmq.server.single
+- system.rabbitmq.server.vhost.openstack
+parameters:
+  _param:
+    rabbitmq_secret_key: ${_param:common_password}
+    rabbitmq_admin_password: ${_param:common_password}

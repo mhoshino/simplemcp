@@ -1,0 +1,25 @@
+classes:
+- system.linux.system.repo.mcp.apt_mirantis.maas
+- system.maas.region.single
+#- system.backupninja.client.single
+- cluster.mjlab.infra
+parameters:
+  _param:
+    # MaaS parameters
+    infra_maas_node01_deploy_address: ${_param:salt_master_host}
+    infra_maas_node01_hostname: ${_param:cluster_name}cfg
+    maas_admin_username: mirantis
+    maas_admin_password: r00tme
+    maas_db_password: ${_param:common_password}
+    #backupninja_backup_host: ${_param:aio_address}
+    #backupninja_engine: rsync
+
+  maas:
+    region:
+      commissioning_scripts:
+        00-maas-05-simplify-network-interfaces: /etc/maas/files/commisioning_scripts/00-maas-05-simplify-network-interfaces
+      bind:
+        host: ${_param:salt_master_host}
+    cluster:
+      region:
+        host: ${_param:salt_master_host}

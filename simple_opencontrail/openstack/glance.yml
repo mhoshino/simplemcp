@@ -1,0 +1,6 @@
+classes:
+- system.glance.control.single
+#- system.glance.client
+parameters:
+  _param:
+    glance_version: ${_param:openstack_version}

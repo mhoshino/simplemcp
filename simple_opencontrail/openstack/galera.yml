@@ -1,0 +1,27 @@
+classes:
+- service.galera.master.cluster
+- system.mysql.client
+- system.mysql.client.database.keystone
+- system.mysql.client.database.glance
+- system.mysql.client.database.nova
+- system.mysql.client.database.nova_api
+- system.mysql.client.database.neutron
+parameters:
+  _param:
+    cluster_local_address: ${_param:single_address}
+    galera_server_maintenance_password: ${_param:common_password}
+    galera_server_admin_password: ${_param:common_password}
+    mysql_admin_user: root
+    mysql_admin_password: ${_param:common_password}
+    mysql_client_password: ${_param:common_password}
+    mysql_glance_password: ${_param:common_password}
+    mysql_nova_password: ${_param:common_password}
+    mysql_neutron_password: ${_param:common_password}
+  galera:
+    master:
+      members:  ~
+  mysql:
+    server: ~
+    client:
+      enabled: true
+    
