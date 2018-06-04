@@ -33,15 +33,15 @@ parameters:
           - cluster.${_param:cluster_name}.infra.prometheus_client
           - cluster.${_param:cluster_name}.infra.grafana_collector
           - cluster.${_param:cluster_name}.infra.fluentd
-          - cluster.${_param:cluster_name}.openstackaio.repo
-          - cluster.${_param:cluster_name}.openstackaio.mysql
-          - cluster.${_param:cluster_name}.openstackaio.rabbitmq
-          - cluster.${_param:cluster_name}.openstackaio.keystone
-          - cluster.${_param:cluster_name}.openstackaio.glance
-          - cluster.${_param:cluster_name}.openstackaio.nova
-          - cluster.${_param:cluster_name}.openstackaio.neutron
-          - cluster.${_param:cluster_name}.openstackaio.horizon
-          - cluster.${_param:cluster_name}.openstackaio.override
+          - cluster.${_param:cluster_name}.openstack.repo
+          - cluster.${_param:cluster_name}.openstack.mysql
+          - cluster.${_param:cluster_name}.openstack.rabbitmq
+          - cluster.${_param:cluster_name}.openstack.keystone
+          - cluster.${_param:cluster_name}.openstack.glance
+          - cluster.${_param:cluster_name}.openstack.nova
+          - cluster.${_param:cluster_name}.openstack.neutron
+          - cluster.${_param:cluster_name}.openstack.horizon
+          - cluster.${_param:cluster_name}.openstack.override
           params:
             single_address: ${_param:aio_address}
             salt_master_host: ${_param:salt_master_ip}

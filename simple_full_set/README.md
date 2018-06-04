@@ -6,56 +6,44 @@ heat stack-create -f simplemcp/heat_templates/simple_full_set.yaml <stack name>
 ```
 # Configure salt master
 ```
-ssh <salt node>
+heat output-show -a <stackname> # this will return secret key and ip
+ssh -i <secret key> -l ubuntu <ip>
 git clone https://github.com/mirantisjp/simplemcp
 ln -sf ~/simplemcp/simple_full_set/ /srv/salt/reclass/classes/cluster/<stack name>
 salt-call -l debug state.apply
 ```
 # Configure AIO openstack node
 ```
-salt-call state.apply linux
-salt-call state.apply salt
-salt-call state.apply mysql.server
-salt-call state.apply mysql.client
-salt-call state.apply rabbitmq
-salt-call state.apply
-salt-call state.apply nova # need to run this again for cell configuration
+salt "*aio*" -l debug state.apply linux,salt
+salt "*aio*" saltutil.sync_all
+salt "*aio*" -l debug state.apply mysql.server
+salt "*aio*" -l debug state.apply
+salt "*aio*" -l debug state.apply nova # need to run this again for cell configuration
 ```
 # Configure Log nodes
 ```
-salt-call state.apply linux
-salt-call state.apply salt
-salt-call state.apply elasticsearch
-salt-call state.apply kibana
-salt-call state.apply 
+salt "*log*" -l debug state.apply linux,salt
+salt "*log*" saltutil.sync_all
+salt "*log*" -l debug state.apply elasticsearch,kibana
+salt "*log*" -l debug state.apply 
 ```
 # Configure Cid nodes
 ```
-salt-call state.apply linux
-salt-call state.apply salt
-salt-call saltutil.sync_all
-salt-call state.apply glusterfs
-salt-call state.apply haproxy
-salt-call state.apply docker
-salt-call state.apply openldap
-salt-call state.apply gerrit
-salt-call state.apply jenkins
-salt-call state.apply jenkins # need to run this twice for jenkins config
-salt-call state.apply
+salt "*cid*" -l debug state.apply linux,salt
+salt "*cid*" -l debug saltutil.sync_all
+salt "*cid*" -l debug state.apply glusterfs,haproxy,docker
+salt "*cid*" -l debug state.apply openladp,gerrit,jenkins
+salt "*cid*" -l debug state.apply jenkins # need to run this twice for jenkins config
+salt "*cid*" -l debug state.apply
 ```
 # Configure mon nodes
 ```
-salt-call state.apply linux
-salt-call state.apply salt
-salt-call saltutil.sync_all
-salt-call state.apply glusterfs
-salt-call state.apply haproxy
-salt-call state.apply devops_portal.config
-salt-call state.apply rundeck.server
-salt-call state.apply prometheus
-salt-call state.apply docker
-salt-call state.apply postgresql.client
-salt-call state.apply prometheus
-salt-call state.apply grafana
-salt-call state.apply rundeck.client
+salt "*mon*" -l debug state.apply linux,salt
+salt "*mon*" -l debug saltutil.sync_all
+salt "*mon*" -l debug state.apply glusterfs,haproxy,devops_portal.config,rundeck.server,prometheus,docker
+salt "*mon*" -l debug state.apply postgresql.client
+salt "*mon*" -l debug state.apply prometheus
+salt "*mon*" -l debug state.apply grafana
+salt "*mon*" -l debug state.apply rundeck.client
+salt "*mon*" -l debug state.apply
 ```
