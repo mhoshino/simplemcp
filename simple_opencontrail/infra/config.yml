@@ -28,9 +28,9 @@ parameters:
           domain: ${_param:domain}
           environment: ${_param:salt_master_base_environment}
           classes:
-          - cluster.${_param:cluster_name}.infra.salt-minion
-          - cluster.${_param:cluster_name}.opencontrail.repo
-          - cluster.${_param:cluster_name}.opencontrail.docker
+          - cluster.common.infra.salt-minion
+          - cluster.common.opencontrail.repo
+          - cluster.common.opencontrail.docker
           - cluster.${_param:cluster_name}.opencontrail.override
           params:
             single_address: ${_param:oc_address}
@@ -43,15 +43,15 @@ parameters:
           domain: ${_param:domain}
           environment: ${_param:salt_master_base_environment}
           classes:
-          - cluster.${_param:cluster_name}.infra.salt-minion
-          - cluster.${_param:cluster_name}.openstack.repo
-          - cluster.${_param:cluster_name}.openstack.mysql
-          - cluster.${_param:cluster_name}.openstack.rabbitmq
-          - cluster.${_param:cluster_name}.openstack.keystone
-          - cluster.${_param:cluster_name}.openstack.glance
+          - cluster.common.infra.salt-minion
+          - cluster.common.openstack.repo
+          - cluster.common.openstack.mysql
+          - cluster.common.openstack.rabbitmq
+          - cluster.common.openstack.keystone
+          - cluster.common.openstack.glance
+          - cluster.common.openstack.horizon
           - cluster.${_param:cluster_name}.openstack.nova
           - cluster.${_param:cluster_name}.openstack.neutron
-          - cluster.${_param:cluster_name}.openstack.horizon
           - cluster.${_param:cluster_name}.openstack.override
           params:
             single_address: ${_param:ctl_address}
@@ -64,8 +64,8 @@ parameters:
           domain: ${_param:domain}
           environment: ${_param:salt_master_base_environment}
           classes:
-          - cluster.${_param:cluster_name}.infra.salt-minion
-          - cluster.${_param:cluster_name}.openstack.repo
+          - cluster.common.infra.salt-minion
+          - cluster.common.openstack.repo
           repeat:
             count: ${_param:cmp_count}
             start: 0

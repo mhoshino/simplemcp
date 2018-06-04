@@ -1,0 +1,35 @@
+classes:
+- system.linux.system.repo.mcp.contrail
+parameters:
+  _param:
+    admin_email: admin@admin.com
+    common_password: password
+    cluster_local_address: ${_param:single_address}
+    rabbitmq_openstack_password: ${_param:common_password}
+    openstack_database_address: ${_param:single_address}
+    openstack_version: pike
+    openstack_region: RegionOne
+    openstack_fluentd_handler_enabled: true
+    openstack_ossyslog_handler_enabled: true
+  linux:
+    system:
+      enabled: true
+    network:
+      hostname: ${linux:system:name}
+      enabled: true
+      fqdn: ${linux:system:name}.${linux:system:domain}
+  # Parameter overide needed on this level
+#  galera:
+#    master:
+#      members:
+#      - host: ${_param:single_address}
+#        port: 4567
+#  mysql:
+#    server:
+#      version: "5.6"
+  nova:
+    compute:
+      cache:
+        members:
+        - host: ${_param:single_address}
+          port: 11211
