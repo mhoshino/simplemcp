@@ -14,125 +14,71 @@ parameters:
     salt_api_password_hash: "$6$sDHRYFYZ$cFRDr/jshAF/oT9uMAfV7vPTANQkna7ff83SoiD4XQaXRz1v2EYpr8pXVa81ZrBGB6XnpEhK5kwbPQHBekm3o/"
     salt_api_password: vyaPRQXnMsLCKCSlsTind9td59bCB8iR
     salt_master_ip: 172.13.0.10
-    aio_address:    172.13.0.11
-    mon_address:    172.13.0.12
-    cid_address:    172.13.0.13
-    log_address:    172.13.0.14
+    oc_address:     172.13.0.11
+    ctl_address:    172.13.0.13
+    cmp_network:    172.13.0
+    cmp_count: 2
   reclass:
     storage:
       data_source:
         engine: local
       node:
-        aio_node:
-          name: ${_param:cluster_name}aio
+        oc_node:
+          name: ${_param:cluster_name}oc
           domain: ${_param:domain}
           environment: ${_param:salt_master_base_environment}
           classes:
-          - cluster.${_param:cluster_name}.infra.salt-minion
-          - cluster.${_param:cluster_name}.infra.telegraf
-          - cluster.${_param:cluster_name}.infra.prometheus_client
-          - cluster.${_param:cluster_name}.infra.grafana_collector
-          - cluster.${_param:cluster_name}.infra.fluentd
-          - cluster.${_param:cluster_name}.openstackaio.repo
-          - cluster.${_param:cluster_name}.openstackaio.mysql
-          - cluster.${_param:cluster_name}.openstackaio.rabbitmq
-          - cluster.${_param:cluster_name}.openstackaio.keystone
-          - cluster.${_param:cluster_name}.openstackaio.glance
-          - cluster.${_param:cluster_name}.openstackaio.nova
-          - cluster.${_param:cluster_name}.openstackaio.neutron
-          - cluster.${_param:cluster_name}.openstackaio.horizon
-          - cluster.${_param:cluster_name}.openstackaio.override
+          - cluster.common.infra.salt-minion
+          - cluster.common.opencontrail.repo
+          - cluster.common.opencontrail.docker
+          - cluster.${_param:cluster_name}.opencontrail.override
           params:
-            single_address: ${_param:aio_address}
+            single_address: ${_param:oc_address}
             salt_master_host: ${_param:salt_master_ip}
             cluster_name: ${_param:cluster_name}
             cluster_domain: ${_param:cluster_name}.${_param:domain}
-            stacklight_log_address: ${_param:log_address}
-        mon_node:
-          name: ${_param:cluster_name}mon
+            openstack_control_address: ${_param:ctl_address}
+        ctl_node:
+          name: ${_param:cluster_name}ctl
           domain: ${_param:domain}
           environment: ${_param:salt_master_base_environment}
           classes:
-          - cluster.${_param:cluster_name}.infra.salt-minion
-          - cluster.${_param:cluster_name}.infra.telegraf
-          - cluster.${_param:cluster_name}.infra.prometheus_client
-          - cluster.${_param:cluster_name}.infra.grafana_collector
-          - cluster.${_param:cluster_name}.infra.fluentd
-          - cluster.${_param:cluster_name}.stacklight.repo
-          - cluster.${_param:cluster_name}.stacklight.glusterfs_single
-          - cluster.${_param:cluster_name}.stacklight.glusterfs
-          - cluster.${_param:cluster_name}.stacklight.docker
-          - cluster.${_param:cluster_name}.stacklight.haproxy_single
-          - cluster.${_param:cluster_name}.stacklight.haproxy
-          - cluster.${_param:cluster_name}.stacklight.grafana
-          - cluster.${_param:cluster_name}.stacklight.monitoring_single
-          - cluster.${_param:cluster_name}.stacklight.monitoring
-          - cluster.${_param:cluster_name}.stacklight.janitor_monkey
-          - cluster.${_param:cluster_name}.stacklight.postgresql
-          - cluster.${_param:cluster_name}.stacklight.pushkin
-          - cluster.${_param:cluster_name}.stacklight.rundeck_single
-          - cluster.${_param:cluster_name}.stacklight.rundeck
-          - cluster.${_param:cluster_name}.stacklight.security_monkey
-          - cluster.${_param:cluster_name}.stacklight.devops_portal
-          - cluster.${_param:cluster_name}.stacklight.override
+          - cluster.common.infra.salt-minion
+          - cluster.common.openstack.repo
+          - cluster.common.openstack.mysql
+          - cluster.common.openstack.rabbitmq
+          - cluster.common.openstack.keystone
+          - cluster.common.openstack.glance
+          - cluster.common.openstack.horizon
+          - cluster.common.openstack.nova
+          - cluster.${_param:cluster_name}.openstack.neutron
+          - cluster.${_param:cluster_name}.openstack.override
           params:
-            single_address: ${_param:mon_address}
+            single_address: ${_param:ctl_address}
             salt_master_host: ${_param:salt_master_ip}
             cluster_name: ${_param:cluster_name}
             cluster_domain: ${_param:domain}
-            cid_host: ${_param:cid_address}
-            stacklight_log_address: ${_param:log_address}
-            openstack_proxy_address: ${_param:aio_address}
-        cid_node:
-          name: ${_param:cluster_name}cid
+            openstack_proxy_address: ${_param:ctl_address}
+        cmp_node:
+          name: ${_param:cluster_name}cmp<<count>>
           domain: ${_param:domain}
           environment: ${_param:salt_master_base_environment}
           classes:
-          - cluster.${_param:cluster_name}.infra.salt-minion
-          - cluster.${_param:cluster_name}.infra.telegraf
-          - cluster.${_param:cluster_name}.infra.prometheus_client
-          - cluster.${_param:cluster_name}.infra.grafana_collector
-          - cluster.${_param:cluster_name}.infra.fluentd
-          - cluster.${_param:cluster_name}.drivetrain.repo
-          - cluster.${_param:cluster_name}.drivetrain.glusterfs_single
-          - cluster.${_param:cluster_name}.drivetrain.glusterfs
-          - cluster.${_param:cluster_name}.drivetrain.docker
-          - cluster.${_param:cluster_name}.drivetrain.haproxy_single
-          - cluster.${_param:cluster_name}.drivetrain.haproxy
-          - cluster.${_param:cluster_name}.drivetrain.openldap
-          - cluster.${_param:cluster_name}.drivetrain.gerrit
-          - cluster.${_param:cluster_name}.drivetrain.jenkins_single
-          - cluster.${_param:cluster_name}.drivetrain.jenkins
-          - cluster.${_param:cluster_name}.drivetrain.kqueen
-          - cluster.${_param:cluster_name}.drivetrain.override
+          - cluster.common.infra.salt-minion
+          - cluster.common.openstack.repo
+          repeat:
+            count: ${_param:cmp_count}
+            start: 0
+            digits: 1
+            params:
+              single_address:
+                value: ${_param:cmp_network}.<<count>>
+                start: 100
           params:
-            single_address: ${_param:cid_address}
             salt_master_host: ${_param:salt_master_ip}
-            cluster_domain: ${_param:domain}
             cluster_name: ${_param:cluster_name}
-            salt_api_password: ${_param:salt_api_password}
-            stacklight_log_address: ${_param:log_address}
-        log_node:
-          name: ${_param:cluster_name}log
-          domain: ${_param:domain}
-          environment: ${_param:salt_master_base_environment}
-          classes:
-          - cluster.${_param:cluster_name}.infra.salt-minion
-          - cluster.${_param:cluster_name}.infra.telegraf
-          - cluster.${_param:cluster_name}.infra.prometheus_client
-          - cluster.${_param:cluster_name}.infra.grafana_collector
-          - cluster.${_param:cluster_name}.infra.fluentd
-          - cluster.${_param:cluster_name}.lma.repo
-          - cluster.${_param:cluster_name}.lma.elasticsearch
-          - cluster.${_param:cluster_name}.lma.kibana
-          - cluster.${_param:cluster_name}.lma.override
-          params:
-            single_address: ${_param:log_address}
-            salt_master_host: ${_param:salt_master_ip}
             cluster_domain: ${_param:domain}
-            cluster_name: ${_param:cluster_name}
-            salt_api_password: ${_param:salt_api_password}
-            stacklight_log_address: ${_param:log_address}
+            openstack_proxy_address: ${_param:ctl_address}
   linux:
     system:
       enabled: true

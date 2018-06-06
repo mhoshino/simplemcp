@@ -1,0 +1,7 @@
+classes:
+- system.nova.compute.single
+parameters:
+  nova:
+    compute:
+      cache:
+        members: ~

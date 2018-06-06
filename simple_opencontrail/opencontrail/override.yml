@@ -1,0 +1,6 @@
+parameters:
+  _param:
+    common_password: password
+    keystone_admin_password: "password"
+    keystone_service_token: "token"
+    openstack_region: "RegionOne"

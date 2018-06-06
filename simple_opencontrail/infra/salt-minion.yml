@@ -1,3 +1,1 @@
-classes:
-- system.salt.minion.master
-
+../../simple_full_set/infra/salt-minion.yml

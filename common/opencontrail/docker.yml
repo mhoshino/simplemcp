@@ -1,0 +1,18 @@
+applications:
+- docker.host
+- docker.swarm
+classes:
+- system.docker.host
+- system.docker.swarm.master
+- system.opencontrail.control.single4_0
+parameters:
+  _param:
+    cluster_vip_address: ${_param:single_address}
+    cluster_public_host: ${_param:single_address}
+    cluster_node01_address: ${_param:single_address}
+    stacklight_monitor_address: ${_param:single_address}
+    opencontrail_stats_password: ${_param:common_password}
+    opencontrail_database_id: 1
+  docker:
+    client:
+     enabled: true
