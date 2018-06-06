@@ -23,7 +23,7 @@ parameters:
     default: nova
   public_net:
     type: string
-    default: floating_net
+    default: public
   dns_servers:
     type: comma_delimited_list
     label: dns_servers
@@ -73,6 +73,8 @@ resources:
       public_net: { get_param: public_net }
       public_key: { get_attr: [ keypair, public_key ]}
       private_key: { get_attr: [ keypair, private_key ]}
+      cfg_hostname: { get_param: [ networks, deploy_net  , hosts, cfg, name]}
+      cfg_ip: { get_param: [ networks, deploy_net , hosts, cfg, ip ]}
     type: server.yaml
   aio:
     depends_on:
@@ -89,6 +91,8 @@ resources:
       public_net: { get_param: public_net }
       public_key: { get_attr: [ keypair, public_key ]}
       private_key: { get_attr: [ keypair, private_key ]}
+      cfg_hostname: { get_param: [ networks, deploy_net  , hosts, cfg, name]}
+      cfg_ip: { get_param: [ networks, deploy_net , hosts, cfg, ip ]}
     type: server.yaml
   mon:
     depends_on:
@@ -105,6 +109,8 @@ resources:
       public_net: { get_param: public_net }
       public_key: { get_attr: [ keypair, public_key ]}
       private_key: { get_attr: [ keypair, private_key ]}
+      cfg_hostname: { get_param: [ networks, deploy_net  , hosts, cfg, name]}
+      cfg_ip: { get_param: [ networks, deploy_net , hosts, cfg, ip ]}
     type: server.yaml
   cid:
     depends_on:
@@ -121,6 +127,8 @@ resources:
       public_net: { get_param: public_net }
       public_key: { get_attr: [ keypair, public_key ]}
       private_key: { get_attr: [ keypair, private_key ]}
+      cfg_hostname: { get_param: [ networks, deploy_net  , hosts, cfg, name]}
+      cfg_ip: { get_param: [ networks, deploy_net , hosts, cfg, ip ]}
     type: server.yaml
   log:
     depends_on:
@@ -137,6 +145,8 @@ resources:
       public_net: { get_param: public_net }
       public_key: { get_attr: [ keypair, public_key ]}
       private_key: { get_attr: [ keypair, private_key ]}
+      cfg_hostname: { get_param: [ networks, deploy_net  , hosts, cfg, name]}
+      cfg_ip: { get_param: [ networks, deploy_net , hosts, cfg, ip ]}
     type: server.yaml         
   deploy_net:
     properties: {name: deploy_net}
