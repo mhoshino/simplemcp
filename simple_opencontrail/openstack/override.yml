@@ -27,9 +27,3 @@ parameters:
 #  mysql:
 #    server:
 #      version: "5.6"
-  nova:
-    compute:
-      cache:
-        members:
-        - host: ${_param:single_address}
-          port: 11211

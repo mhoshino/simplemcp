@@ -50,7 +50,7 @@ parameters:
           - cluster.common.openstack.keystone
           - cluster.common.openstack.glance
           - cluster.common.openstack.horizon
-          - cluster.${_param:cluster_name}.openstack.nova
+          - cluster.common.openstack.nova
           - cluster.${_param:cluster_name}.openstack.neutron
           - cluster.${_param:cluster_name}.openstack.override
           params:
