@@ -1,8 +1,7 @@
 application:
 - linux.system.repo
 classes:
-- system.linux.system.repo.docker
-- system.linux.system.repo.mcp.extra
+- system.linux.system.repo.mcp.apt_mirantis.docker
 - system.linux.system.repo.mcp.contrail
 parameters:
   _param:

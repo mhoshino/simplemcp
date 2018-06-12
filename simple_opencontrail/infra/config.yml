@@ -15,6 +15,7 @@ parameters:
     salt_api_password: vyaPRQXnMsLCKCSlsTind9td59bCB8iR
     salt_master_ip: 172.13.0.10
     oc_address:     172.13.0.11
+    vsrx_address:   172.13.0.12
     ctl_address:    172.13.0.13
     cmp_network:    172.13.0
     cmp_count: 2
@@ -30,7 +31,7 @@ parameters:
           classes:
           - cluster.common.infra.salt-minion
           - cluster.common.opencontrail.repo
-          - cluster.common.opencontrail.docker
+          - cluster.common.opencontrail.control
           - cluster.${_param:cluster_name}.opencontrail.override
           params:
             single_address: ${_param:oc_address}
@@ -59,6 +60,9 @@ parameters:
             cluster_name: ${_param:cluster_name}
             cluster_domain: ${_param:domain}
             openstack_proxy_address: ${_param:ctl_address}
+            opencontrail_control_address: ${_param:oc_address}
+            opencontrail_router01_hostname: ${_param:cluster_name}vsrx.${_param:cluster_domain}
+            opencontrail_router01_address: ${_param:vsrx_address}
         cmp_node:
           name: ${_param:cluster_name}cmp<<count>>
           domain: ${_param:domain}
@@ -66,6 +70,10 @@ parameters:
           classes:
           - cluster.common.infra.salt-minion
           - cluster.common.openstack.repo
+          - cluster.common.openstack.nova_compute
+          - cluster.common.opencontrail.compute_single
+          - cluster.${_param:cluster_name}.openstack.compute
+          - cluster.${_param:cluster_name}.openstack.override
           repeat:
             count: ${_param:cmp_count}
             start: 0
@@ -79,6 +87,10 @@ parameters:
             cluster_name: ${_param:cluster_name}
             cluster_domain: ${_param:domain}
             openstack_proxy_address: ${_param:ctl_address}
+            opencontrail_control_address: ${_param:oc_address}
+            opencontrail_analytics_address: ${_param:oc_address}
+            control_address: ${_param:ctl_address}
+            cluster_public_host: ${_param:ctl_address}
   linux:
     system:
       enabled: true

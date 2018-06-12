@@ -1,0 +1,49 @@
+classes:
+- cluster.common.opencontrail.compute_single
+parameters:
+  _param:
+    keystone_admin_password: "password"
+    keystone_service_token: "token"
+    openstack_region: "RegionOne"
+    opencontrail_compute_address: ${_param:single_address}
+    opencontrail_compute_gateway: 172.13.0.1
+    opencontrail_compute_iface_mask: 255.255.255.0
+    opencontrail_compute_iface: ens3
+    opencontrail_compute_dns: 8.8.8.8
+  linux:
+    network:
+      concat_iface_files:
+      - src: '/etc/network/interfaces.d/50-cloud-init.cfg'
+        dst: '/etc/network/interfaces'
+      interface:
+        ens3:
+          enabled: true
+          ipflush_onchange: true
+          type: eth
+          proto: manual
+          pre_up_cmds:
+          - ethtool -K ens3 rx off tx off gro off tso off
+        vhost0:
+          enabled: true
+          type: eth
+          mtu: 1500
+          address: ${_param:single_address}
+          netmask: ${_param:opencontrail_compute_iface_mask}
+          pre_up_cmds:
+          - /usr/lib/contrail/if-vhost0
+          use_interfaces:
+          - ens4
+  nova:
+    compute:
+      cache:
+        members:
+        - host: ${_param:single_address}
+          port: 11211
+  opencontrail:
+    compute:
+      config:
+        members:
+        - host: ${_param:opencontrail_control_address}
+      collector:
+        members:
+        - host: ${_param:opencontrail_analytics_address}
