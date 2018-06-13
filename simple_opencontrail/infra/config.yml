@@ -13,12 +13,15 @@ parameters:
     salt_master_base_environment: prd
     salt_api_password_hash: "$6$sDHRYFYZ$cFRDr/jshAF/oT9uMAfV7vPTANQkna7ff83SoiD4XQaXRz1v2EYpr8pXVa81ZrBGB6XnpEhK5kwbPQHBekm3o/"
     salt_api_password: vyaPRQXnMsLCKCSlsTind9td59bCB8iR
-    salt_master_ip: 172.13.0.10
-    oc_address:     172.13.0.11
-    vsrx_address:   172.13.0.12
-    ctl_address:    172.13.0.13
-    cmp_network:    172.13.0
+    salt_master_ip: 192.168.10.10
+    oc_address:     192.168.10.11
+    ctl_address:    192.168.10.12
+    cmp_network:    192.168.10
     cmp_count: 2
+    vsrx_address:   192.168.10.131
+    prv_network:    172.16.10
+    private_vsrx_address: 172.16.10.131
+
   reclass:
     storage:
       data_source:
@@ -82,6 +85,9 @@ parameters:
               single_address:
                 value: ${_param:cmp_network}.<<count>>
                 start: 100
+              private_address:
+                value: ${_param:prv_network}.<<count>>
+                start: 100
           params:
             salt_master_host: ${_param:salt_master_ip}
             cluster_name: ${_param:cluster_name}
@@ -91,6 +97,8 @@ parameters:
             opencontrail_analytics_address: ${_param:oc_address}
             control_address: ${_param:ctl_address}
             cluster_public_host: ${_param:ctl_address}
+            private_vsrx_address: ${_param:private_vsrx_address}
+            
   linux:
     system:
       enabled: true

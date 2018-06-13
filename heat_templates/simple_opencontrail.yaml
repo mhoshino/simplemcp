@@ -39,33 +39,33 @@ parameters:
     default:
       deploy_net:
         device: ens3
-        cidr: 172.13.0.0/24
+        cidr: 192.168.10.0/24
         hosts:
           cfg:
             name: cfg
-            ip: 172.13.0.10
+            ip: 192.168.10.10
           oc:
             name: oc
-            ip: 172.13.0.11
+            ip: 192.168.10.11
           vsrx:
             name: vsrx
-            ip: 172.13.0.12
+            ip: 192.168.10.131
           ctl:
             name: ctl
-            ip: 172.13.0.13
+            ip: 192.168.10.12
           cmp:
             name: cmp
-            ipprefix: 172.13.0.10
+            ipprefix: 192.168.10.10
       private_net:
         device: ens4
-        cidr: 172.19.0.0/24
+        cidr: 172.16.10.0/24
         hosts:
           vsrx:
             name: vsrx
-            ip: 172.19.0.12
+            ip: 172.16.10.131
           cmp:
             name: cmp
-            ipprefix: 172.19.0.10
+            ipprefix: 172.16.10.10
 outputs:
   cfg_floating_ip:
     value:

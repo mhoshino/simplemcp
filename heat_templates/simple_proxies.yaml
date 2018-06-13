@@ -27,14 +27,14 @@ parameters:
     default:
       deploy_net:
         device: ens3
-        cidr: 172.13.0.0/24
+        cidr: 192.168.10.0/24
         hosts:
           cfg:
             name: cfg
-            ip: 172.13.0.10
+            ip: 192.168.10.10
           prx:
             name: prx
-            ipprefix: 172.13.0.10
+            ipprefix: 192.168.10.10
 outputs:
   cfg_floating_ip:
     value:

@@ -13,11 +13,11 @@ parameters:
     salt_master_base_environment: prd
     salt_api_password_hash: "$6$sDHRYFYZ$cFRDr/jshAF/oT9uMAfV7vPTANQkna7ff83SoiD4XQaXRz1v2EYpr8pXVa81ZrBGB6XnpEhK5kwbPQHBekm3o/"
     salt_api_password: vyaPRQXnMsLCKCSlsTind9td59bCB8iR
-    salt_master_ip: 172.13.0.10
-    aio_address:    172.13.0.11
-    mon_address:    172.13.0.12
-    cid_address:    172.13.0.13
-    log_address:    172.13.0.14
+    salt_master_ip: 192.168.10.10
+    aio_address:    192.168.10.11
+    mon_address:    192.168.10.12
+    cid_address:    192.168.10.13
+    log_address:    192.168.10.14
   reclass:
     storage:
       data_source:
