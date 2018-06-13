@@ -18,6 +18,15 @@ parameters:
     type: string
   deploy_netip:
     type: string
+  create_private:
+    type: boolean
+    default: false
+  private_net:
+    type: string
+    default: ""
+  private_netip:
+    type: string
+    default: ""
   public_key:
     type: string
   private_key:
@@ -44,10 +53,15 @@ parameters:
   system_class_version:
     type: string
     default: "2018.4.0" 
+  
 conditions:
   create_handle:
     equals:
      - get_param: waithandle
+     - true
+  create_private_interface:
+    equals:
+     - get_param: create_private
      - true
 outputs:
   server_id:
@@ -71,7 +85,11 @@ resources:
             stackname: { get_param: stackname }
             name: { get_param: name }
       networks: 
-      - port: { get_resource: deploy_netport }
+        if:
+          - create_private_interface
+          - - port: { get_resource: deploy_netport }
+            - port: { get_resource: private_netport } 
+          - - port: { get_resource: deploy_netport }
       user_data: {get_resource: cloud_config}
       user_data_format: RAW
   deploy_netport:
@@ -80,6 +98,14 @@ resources:
       fixed_ips: [ {  "ip_address": { get_param: deploy_netip } } ]
       security_groups: 
       - { get_resource: security_group}      
+    type: OS::Neutron::Port
+  private_netport:
+    condition: create_private_interface
+    properties:
+      network: {get_param: private_net}
+      fixed_ips: [ {  "ip_address": { get_param: private_netip} } ]
+      security_groups:
+      - { get_resource: security_group}
     type: OS::Neutron::Port
   security_group_random:
     type: OS::Heat::RandomString

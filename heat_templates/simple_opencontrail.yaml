@@ -30,7 +30,7 @@ parameters:
   dns_servers:
     type: comma_delimited_list
     label: dns_servers
-    default: 8.8.8.8
+    default: 8.8.8.8,8.8.4.4
   cmp_count:
     type: string
     default: 2
@@ -56,6 +56,16 @@ parameters:
           cmp:
             name: cmp
             ipprefix: 172.13.0.10
+      private_net:
+        device: ens4
+        cidr: 172.19.0.0/24
+        hosts:
+          vsrx:
+            name: vsrx
+            ip: 172.19.0.12
+          cmp:
+            name: cmp
+            ipprefix: 172.19.0.10
 outputs:
   cfg_floating_ip:
     value:
@@ -112,6 +122,9 @@ resources:
       name: { get_param: [ networks, deploy_net , hosts, vsrx, name]}
       deploy_netip: { get_param: [ networks, deploy_net , hosts, vsrx, ip]}
       deploy_net: {get_resource: deploy_net}
+      create_private: true
+      private_netip: { get_param: [ networks, private_net , hosts, vsrx, ip]}
+      private_net: {get_resource: private_net}
       public_net: { get_param: public_net }
       public_key: { get_attr: [ keypair, public_key ]}
       private_key: { get_attr: [ keypair, private_key ]}
@@ -162,6 +175,13 @@ resources:
               params:
                 startip: { get_param: [ networks, deploy_net , hosts, cmp, ipprefix]}
           deploy_net: {get_resource: deploy_net}
+          create_private: true
+          private_netip:
+            str_replace:
+              template: startip%index%
+              params:
+                startip: { get_param: [ networks, private_net , hosts, cmp, ipprefix]}
+          private_net: {get_resource: private_net}
           public_net: { get_param: public_net }
           public_key: { get_attr: [ keypair, public_key ]}
           private_key: { get_attr: [ keypair, private_key ]}
@@ -175,6 +195,21 @@ resources:
       cidr: { get_param: [ networks, deploy_net , cidr]}
       network: {get_resource: deploy_net}
       dns_nameservers: 
+        repeat:
+          for_each:
+            dns_server: { get_param: dns_servers }
+          template:
+            dns_server
+    type: OS::Neutron::Subnet
+  private_net:
+    properties: {name: private_net}
+    type: OS::Neutron::Net
+  private_subnet:
+    properties:
+      cidr: { get_param: [ networks, private_net , cidr]}
+      network: {get_resource: private_net}
+      gateway_ip: 0.0.0.0
+      dns_nameservers:
         repeat:
           for_each:
             dns_server: { get_param: dns_servers }
