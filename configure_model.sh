@@ -6,10 +6,11 @@ DEPLOY_NAME=$2
 
 git clone https://github.com/mirantisjp/simplemcp
 ln -s /simplemcp/common /srv/salt/reclass/classes/cluster/common
-if [[ -n DEPLOY_NAME ]]
+if [ -n DEPLOY_NAME ]
 then
   ln -s /simplemcp/$DEPLOY_NAME /srv/salt/reclass/classes/cluster/$CLUSTERNAME
-  salt-call debug state.apply
+  salt-call state.apply
+  salt -C "*" saltutil.refresh_pillar
   salt -C "*" state.apply linux,salt
   salt -C "*" saltutil.sync_all
 fi
