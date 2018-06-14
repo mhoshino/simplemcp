@@ -1,5 +1,8 @@
 heat_template_version: '2017-02-24'
 parameters:
+  deploy_name:
+    type: string
+    default: ""
   stackname:
     type: string
   name:
@@ -53,7 +56,6 @@ parameters:
   system_class_version:
     type: string
     default: "2018.4.0" 
-  
 conditions:
   create_handle:
     equals:
@@ -150,6 +152,7 @@ resources:
       config:
         str_replace:
           params:
+            deploy_name: { get_param: deploy_name }
             stackname: { get_param: stackname }
             cfg_hostname: { get_param: cfg_hostname }
             cfg_ip: { get_param: cfg_ip } 
