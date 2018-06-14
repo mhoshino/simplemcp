@@ -1,7 +1,9 @@
 classes:
 - cluster.common.opencontrail.compute_single
+- system.linux.system.repo.mcp.contrail
 parameters:
   _param:
+    linux_repo_contrail_component: oc40
     keystone_admin_password: "password"
     keystone_service_token: "token"
     openstack_region: "RegionOne"
@@ -40,11 +42,27 @@ parameters:
         members:
         - host: ${_param:single_address}
           port: 11211
+      image:
+        user: glance
+        password: ${_param:common_password}
+      network:
+        user: neutron
+        password: ${_param:common_password}
   opencontrail:
+    client:
+      api:
+        host:  ${_param:opencontrail_control_address}
+      identity:
+        host: ${_param:control_address} 
     compute:
+      control:
+        members:
+        - host: ${_param:opencontrail_control_address}
       config:
         members:
         - host: ${_param:opencontrail_control_address}
       collector:
         members:
         - host: ${_param:opencontrail_analytics_address}
+     
+      
