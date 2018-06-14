@@ -1,5 +1,8 @@
 heat_template_version: '2017-02-24'
 parameters:
+  deploy_name:
+    type: string
+    default: "simple_opencontrail"
   cfg_flavor:
     type: string
     default: m1.small
@@ -78,6 +81,7 @@ resources:
     depends_on:
     - deploy_subnet
     properties:
+      deploy_name: {get_param: deploy_name }
       stackname: {get_param: 'OS::stack_name' }
       availability_zone: { get_param: availability_zone}
       flavor: { get_param: cfg_flavor}
